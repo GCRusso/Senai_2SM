@@ -5,10 +5,9 @@ using static webapi.event_.manha.Domains.UsuarioDomain;
 
 namespace webapi.event_.manha.Domains
 {
-    public class EventoDomain
-    {
-        [Table(nameof(Evento))]
-        public class Evento
+
+        [Table(nameof(EventoDomain))]
+        public class EventoDomain
         {
             [Key]
             public Guid IdEvento { get; set; } = Guid.NewGuid();
@@ -39,10 +38,8 @@ namespace webapi.event_.manha.Domains
             public Guid IdInstituicao { get; set; }
 
             [ForeignKey(nameof(IdInstituicao))]
-            public InstituicaoDomain? TiposUsuario { get; set; }
-
-
+            public InstituicaoDomain? Instituicao { get; set; }
 
         }
     }
-}
+

@@ -5,7 +5,7 @@ using static webapi.event_.manha.Domains.UsuarioDomain;
 
 namespace webapi.event_.manha.Domains
 {
-    [Table(nameof(TiposUsuario))]
+    [Table(nameof(TiposUsuarioDomain))]
     public class TiposUsuarioDomain
     {
         [Key]

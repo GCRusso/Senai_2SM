@@ -4,13 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webapi.event_.manha.Domains
 {
-    public class UsuarioDomain
-    {
+
         //Criando a tabela no BD
-        [Table (nameof(Usuario))]
+        [Table (nameof(UsuarioDomain))]
         //Para deixar o Email UNICO
         [Index(nameof(Email), IsUnique = true)]
-        public class Usuario 
+        public class UsuarioDomain
         {
             [Key]
             //Guid para criar a hash
@@ -35,7 +34,7 @@ namespace webapi.event_.manha.Domains
 
             [ForeignKey(nameof(IdTipoUsuario))]
             //[ForeignKey("IdTipoUsuario")] ambos fazem o mesmo papel
-            public TiposUsuario? TiposUsuario { get; set; }
+            public TiposUsuarioDomain? TiposUsuario { get; set; }
         }
     }
-}
+

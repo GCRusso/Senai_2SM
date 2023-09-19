@@ -5,11 +5,9 @@ using static webapi.event_.manha.Domains.UsuarioDomain;
 
 namespace webapi.event_.manha.Domains
 {
-    public class InstituicaoDomain
-    {
-        [Table(nameof(Instituicao))]
+        [Table(nameof(InstituicaoDomain))]
         [Index(nameof(CNPJ), IsUnique = true)]
-        public class Instituicao
+        public class InstituicaoDomain
         {
             [Key]
             public Guid IdInstituicao { get; set; } = Guid.NewGuid();
@@ -29,4 +27,4 @@ namespace webapi.event_.manha.Domains
             public string? NomeFantasia { get; set; }    
         }
     }
-}
+
