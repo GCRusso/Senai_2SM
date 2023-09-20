@@ -13,12 +13,27 @@ namespace webapi.event_.manha.Repositories
     {
             _eventoContext = new EventoContext();
     }
-
-    public UsuarioDomain BuscarPorEmailESenha(string email, string senha)
+        
+        
+        //********************* BUSCAR POR EMAIL E SENHA
+        public UsuarioDomain BuscarPorEmailESenha(string email, string senha)
     {
             try
             {
-                UsuarioDomain usuarioBuscado = _eventoContext.Usuario.FirstOrDefault(u => u.Email == email)!;
+                UsuarioDomain usuarioBuscado = _eventoContext.Usuario
+                    .Select(u => new UsuarioDomain
+                    {
+                        IdUsuario = u.IdUsuario,
+                        Nome = u.Nome,
+                        Email = u.Email,
+                        Senha = u.Senha,
+
+                        TiposUsuario = new TiposUsuarioDomain
+                        {
+                            IdTipoUsuario = u.IdTipoUsuario,
+                            Titulo = u.TiposUsuario.Titulo,
+                        }
+                    }).FirstOrDefault(u => u.Email == email)!;
 
                 if (usuarioBuscado != null)
                 {
@@ -36,8 +51,8 @@ namespace webapi.event_.manha.Repositories
                 throw;
             }
     }
-
-    public UsuarioDomain BuscarPorId(Guid id)
+        //********************* BUSCAR POR ID
+        public UsuarioDomain BuscarPorId(Guid id)
     {
             try
             {
@@ -46,6 +61,8 @@ namespace webapi.event_.manha.Repositories
                     {
                         IdUsuario = u.IdUsuario,
                         Nome = u.Nome,
+                        Email = u.Email,
+                        Senha = u.Senha,
                         
                         TiposUsuario = new TiposUsuarioDomain
                         {
@@ -66,7 +83,7 @@ namespace webapi.event_.manha.Repositories
                 throw;
             }
     }
-
+        //******************* CADASTRAR
     public void Cadastrar(UsuarioDomain usuario)
     {
             try

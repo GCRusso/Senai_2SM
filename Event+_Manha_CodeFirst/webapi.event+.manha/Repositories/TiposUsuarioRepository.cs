@@ -14,7 +14,7 @@ namespace webapi.event_.manha.Repositories
 
 
 
-
+        //********************* CADASTRAR
         public void Cadastrar(TiposUsuarioDomain tipoUsuario)
         {
             _eventoContext.TiposUsuario.Add(tipoUsuario);
@@ -22,22 +22,45 @@ namespace webapi.event_.manha.Repositories
             _eventoContext.SaveChanges();
         }
 
+        //********************* DELETAR
         public void Deletar(Guid id)
         {
             throw new NotImplementedException();
         }
 
+        //********************* BUSCAR POR ID
         public TiposUsuarioDomain BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                TiposUsuarioDomain usuarioBuscado = _eventoContext.TiposUsuario
+                    .Select(u => new TiposUsuarioDomain
+                    {
+                        IdTipoUsuario = u.IdTipoUsuario,
+                        Titulo = u.Titulo,
+
+                    }).FirstOrDefault(u => u.IdTipoUsuario == id)!;
+
+                if (usuarioBuscado != null)
+                {
+                    return usuarioBuscado;
+                }
+                return null!;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-
+        // ****************** LISTAR TODOS
         public List<TiposUsuarioDomain> Listar(Guid id)
         {
-            throw new NotImplementedException();
+            return _eventoContext.TiposUsuario.ToList();
         }
 
+        //********************* ATUALIZAR
         public void Atualizar(Guid id, TiposUsuarioDomain tipoUsuario)
         {
             throw new NotImplementedException();

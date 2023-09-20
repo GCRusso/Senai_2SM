@@ -18,6 +18,12 @@ namespace webapi.event_.manha.Controllers
             _tiposUsuarioRepository = new TiposUsuarioRepository();
         }
 
+        //********************* CADASTRAR
+        /// <summary>
+        /// EndPoint que aciona o metodo Cadastrar
+        /// </summary>
+        /// <param name="tiposUsuario"></param>
+        /// <returns> Cadastra um novo objeto na lista TiposUsuarioDomain </returns>
         [HttpPost]
         public IActionResult Post(TiposUsuarioDomain tiposUsuario)
         {
@@ -26,7 +32,7 @@ namespace webapi.event_.manha.Controllers
                 _tiposUsuarioRepository.Cadastrar(tiposUsuario);
 
                 return StatusCode(201);
-           }
+            }
             catch (Exception erro)
             {
 
@@ -34,5 +40,42 @@ namespace webapi.event_.manha.Controllers
             }
         }
 
+        //********************* BUSCAR POR ID
+        /// <summary>
+        /// Endpoint que aciona o método BuscarPorId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> Retorna o objeto com o respectivo ID </returns>
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                return Ok(_tiposUsuarioRepository.BuscarPorId(id));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+        //********************* LISTAR
+        /// <summary>
+        /// EndPoint que aciona o método Listar
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> Retorna a lista com os objetos cadastrados </returns>
+        [HttpGet]
+        public IActionResult Get(Guid id)
+        {
+            try
+            {
+                return Ok(_tiposUsuarioRepository.Listar(id));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
     }
 }

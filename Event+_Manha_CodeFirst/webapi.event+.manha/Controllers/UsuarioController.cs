@@ -18,9 +18,15 @@ namespace webapi.event_.manha.Controllers
         {
             _usuarioRepository = new UsuarioRepository();
         }
+
         //******************** CADASTRAR
+        /// <summary>
+        /// EndPoint que aciona o método Cadastrar
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns> Adiciona um novo objeto na lista UsuarioDomain </returns>
         [HttpPost]
-        public IActionResult Post (UsuarioDomain usuario)
+        public IActionResult Post(UsuarioDomain usuario)
         {
             try
             {
@@ -36,6 +42,46 @@ namespace webapi.event_.manha.Controllers
         }
 
         //************************* BUSCAR POR ID
+        /// <summary>
+        /// EndPoint que aciona o método BuscarPorId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> Retorna o objeto cadastrado com o respectivo ID </returns>
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                return Ok(_usuarioRepository.BuscarPorId(id));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
 
+        //************************* BUSCAR POR EMAIL E SENHA
+        [HttpGet]
+
+        public IActionResult Get(string email, string senha) 
+        {
+            try
+            {
+                UsuarioDomain usuarioBuscado = _usuarioRepository.BuscarPorEmailESenha(email,senha);
+
+                if (usuarioBuscado == null)
+                {
+                    //Caso nao seja encontrado retorna esta mensagem personalizada e o erro 404
+                    return NotFound("Nenhum usuário foi encontrado!");
+                }
+
+                return Ok(usuarioBuscado);
+                
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
     }
 }

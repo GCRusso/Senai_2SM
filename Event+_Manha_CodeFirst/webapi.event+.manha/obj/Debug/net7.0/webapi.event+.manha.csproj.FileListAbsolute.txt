@@ -81,3 +81,4 @@ C:\Users\23655858841\Desktop\Senai_2_SM\Event+_Manha_CodeFirst\webapi.event+.man
 C:\Users\23655858841\Desktop\Senai_2_SM\Event+_Manha_CodeFirst\webapi.event+.manha\obj\Debug\net7.0\webapi.event+.manha.pdb
 C:\Users\23655858841\Desktop\Senai_2_SM\Event+_Manha_CodeFirst\webapi.event+.manha\obj\Debug\net7.0\webapi.event+.manha.genruntimeconfig.cache
 C:\Users\23655858841\Desktop\Senai_2_SM\Event+_Manha_CodeFirst\webapi.event+.manha\obj\Debug\net7.0\ref\webapi.event+.manha.dll
+C:\Users\23655858841\Desktop\Senai_2_SM\Event+_Manha_CodeFirst\webapi.event+.manha\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
