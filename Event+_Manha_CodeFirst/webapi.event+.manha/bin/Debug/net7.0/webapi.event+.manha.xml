@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.event+.manha</name>
+    </assembly>
+    <members>
+        <member name="M:webapi.event_.manha.Controllers.TiposUsuarioController.Post(webapi.event_.manha.Domains.TiposUsuarioDomain)">
+            <summary>
+            EndPoint que aciona o metodo Cadastrar
+            </summary>
+            <param name="tiposUsuario"></param>
+            <returns> Cadastra um novo objeto na lista TiposUsuarioDomain </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.TiposUsuarioController.GetById(System.Guid)">
+            <summary>
+            Endpoint que aciona o método BuscarPorId
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna o objeto com o respectivo ID </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.TiposUsuarioController.Get">
+            <summary>
+            EndPoint que aciona o método Listar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.TiposUsuarioController.Delete(System.Guid)">
+            <summary>
+            EndPoint que aciona o método Deletar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.TiposUsuarioController.Put(System.Guid,webapi.event_.manha.Domains.TiposUsuarioDomain)">
+            <summary>
+            EndPoint que aciona o método Atualizar
+            </summary>
+            <param name="id"></param>
+            <param name="tiposUsuario"></param>
+            <returns> Retorna a lista de objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.UsuarioController.Put(System.Guid,webapi.event_.manha.Domains.UsuarioDomain)">
+            <summary>
+            EndPoint que aciona o método Atualizar
+            </summary>
+            <param name="id"></param>
+            <param name="usuario"></param>
+            <returns> Retorna a lista de objetos atualizada </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.UsuarioController.Post(webapi.event_.manha.Domains.UsuarioDomain)">
+            <summary>
+            EndPoint que aciona o método Cadastrar
+            </summary>
+            <param name="usuario"></param>
+            <returns> Adiciona um novo objeto na lista UsuarioDomain </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.UsuarioController.GetById(System.Guid)">
+            <summary>
+            EndPoint que aciona o método BuscarPorId
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna o objeto cadastrado com o respectivo ID </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.UsuarioController.Get(System.String,System.String)">
+            <summary>
+            EndPoint que aciona o método BuscarPorEmailESenha
+            </summary>
+            <param name="email"></param>
+            <param name="senha"></param>
+            <returns> Retorna o objeto cadastrado(usuário) </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.UsuarioController.GetAction">
+            <summary>
+            EndPoint que aciona o método Listar
+            </summary>
+            <returns> Retorna a lista completa de objetos cadastrados </returns>
+        </member>
+        <member name="T:webapi.event_.manha.Migrations.BD">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.manha.Migrations.BD.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.manha.Migrations.BD.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.manha.Migrations.BD.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

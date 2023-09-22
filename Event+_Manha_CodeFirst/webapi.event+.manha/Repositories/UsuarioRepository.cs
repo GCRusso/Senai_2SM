@@ -9,15 +9,32 @@ namespace webapi.event_.manha.Repositories
     {
         private readonly EventoContext _eventoContext;
 
-    public UsuarioRepository()
-    {
+        public UsuarioRepository()
+        {
             _eventoContext = new EventoContext();
-    }
-        
-        
+        }
+
+        //******************* ATUALIZAR
+        public void Atualizar(Guid id, UsuarioDomain usuario)
+        {
+            UsuarioDomain usuarioBuscado = _eventoContext.Usuario.Find(id)!;
+
+            if (usuarioBuscado != null)
+            {
+                usuarioBuscado.Nome = usuario.Nome;
+                usuarioBuscado.Email = usuario.Email;
+                usuarioBuscado.Senha = usuario.Senha;
+            }
+            _eventoContext.Update(usuarioBuscado);
+            _eventoContext.SaveChanges();
+        }
+
+
+
+
         //********************* BUSCAR POR EMAIL E SENHA
         public UsuarioDomain BuscarPorEmailESenha(string email, string senha)
-    {
+        {
             try
             {
                 UsuarioDomain usuarioBuscado = _eventoContext.Usuario
@@ -50,26 +67,13 @@ namespace webapi.event_.manha.Repositories
 
                 throw;
             }
-    }
+        }
         //********************* BUSCAR POR ID
         public UsuarioDomain BuscarPorId(Guid id)
-    {
+        {
             try
             {
-                UsuarioDomain usuarioBuscado = _eventoContext.Usuario
-                    .Select(u => new UsuarioDomain
-                    {
-                        IdUsuario = u.IdUsuario,
-                        Nome = u.Nome,
-                        Email = u.Email,
-                        Senha = u.Senha,
-                        
-                        TiposUsuario = new TiposUsuarioDomain
-                        {
-                            IdTipoUsuario= u.IdTipoUsuario,
-                            Titulo = u.TiposUsuario.Titulo,
-                        }
-                    }).FirstOrDefault(u => u.IdUsuario == id)!;
+                UsuarioDomain usuarioBuscado = _eventoContext.Usuario.FirstOrDefault(u => u.IdUsuario == id)!;
 
                 if (usuarioBuscado != null)
                 {
@@ -82,10 +86,10 @@ namespace webapi.event_.manha.Repositories
 
                 throw;
             }
-    }
+        }
         //******************* CADASTRAR
-    public void Cadastrar(UsuarioDomain usuario)
-    {
+        public void Cadastrar(UsuarioDomain usuario)
+        {
             try
             {
                 usuario.Senha = Criptografia.GerarHash(usuario.Senha!);
@@ -99,6 +103,20 @@ namespace webapi.event_.manha.Repositories
 
                 throw;
             }
+        }
+        //******************* DELETAR
+        public void Deletar(Guid id)
+        {
+            UsuarioDomain usuario = _eventoContext.Usuario.Find(id)!;
+            _eventoContext.Usuario.Remove(usuario);
+            _eventoContext.SaveChanges();
+        }
+
+
+        //******************* LISTAR
+        public List<UsuarioDomain> Listar()
+        {
+            return _eventoContext.Usuario.ToList();
+        }
     }
-}
 }

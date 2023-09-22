@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.event_.manha.Domains;
 using webapi.event_.manha.Interfaces;
@@ -25,6 +27,7 @@ namespace webapi.event_.manha.Controllers
         /// <param name="tiposUsuario"></param>
         /// <returns> Cadastra um novo objeto na lista TiposUsuarioDomain </returns>
         [HttpPost]
+
         public IActionResult Post(TiposUsuarioDomain tiposUsuario)
         {
             try
@@ -66,16 +69,59 @@ namespace webapi.event_.manha.Controllers
         /// <param name="id"></param>
         /// <returns> Retorna a lista com os objetos cadastrados </returns>
         [HttpGet]
-        public IActionResult Get(Guid id)
+        public IActionResult Get()
         {
             try
             {
-                return Ok(_tiposUsuarioRepository.Listar(id));
+                return Ok(_tiposUsuarioRepository.Listar());
             }
             catch (Exception erro)
             {
                 return BadRequest(erro.Message);
             }
         }
+
+        //*************************** DELETAR PELO ID
+        /// <summary>
+        /// EndPoint que aciona o método Deletar
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> Retorna a lista com os objetos cadastrados </returns>
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _tiposUsuarioRepository.Deletar(id);
+
+                return StatusCode(204);
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro.Message);
+            }
+        }
+
+        //************************ ATUALIZAR PELO ID
+        /// <summary>
+        /// EndPoint que aciona o método Atualizar
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tiposUsuario"></param>
+        /// <returns> Retorna a lista de objetos cadastrados </returns>
+        [HttpPut("{id}")]
+        public IActionResult Put(Guid id, TiposUsuarioDomain tiposUsuario)
+        {
+            try
+            {
+                _tiposUsuarioRepository.Atualizar(id, tiposUsuario);
+                return StatusCode(200);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        } 
     }
 }

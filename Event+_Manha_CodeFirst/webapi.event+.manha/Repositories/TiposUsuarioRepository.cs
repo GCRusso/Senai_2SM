@@ -25,7 +25,9 @@ namespace webapi.event_.manha.Repositories
         //********************* DELETAR
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            TiposUsuarioDomain tiposUsuario = _eventoContext.TiposUsuario.Find(id)!;
+            _eventoContext.TiposUsuario.Remove(tiposUsuario);
+            _eventoContext.SaveChanges();
         }
 
         //********************* BUSCAR POR ID
@@ -55,7 +57,7 @@ namespace webapi.event_.manha.Repositories
         }
 
         // ****************** LISTAR TODOS
-        public List<TiposUsuarioDomain> Listar(Guid id)
+        public List<TiposUsuarioDomain> Listar()
         {
             return _eventoContext.TiposUsuario.ToList();
         }
@@ -63,7 +65,14 @@ namespace webapi.event_.manha.Repositories
         //********************* ATUALIZAR
         public void Atualizar(Guid id, TiposUsuarioDomain tipoUsuario)
         {
-            throw new NotImplementedException();
+            TiposUsuarioDomain tipoUsuarioBuscado = _eventoContext.TiposUsuario.Find(id)!;
+
+            if (tipoUsuarioBuscado != null)
+            {
+                tipoUsuarioBuscado.Titulo = tipoUsuario.Titulo;
+            }
+            _eventoContext.Update(tipoUsuarioBuscado);
+            _eventoContext.SaveChanges();
         }
     }
 }

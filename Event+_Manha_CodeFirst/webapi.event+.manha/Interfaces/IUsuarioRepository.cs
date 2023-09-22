@@ -9,5 +9,11 @@ namespace webapi.event_.manha.Interfaces
         UsuarioDomain BuscarPorId(Guid id);
 
         UsuarioDomain BuscarPorEmailESenha(string email, string senha);
+
+        List<UsuarioDomain> Listar();
+
+        void Atualizar(Guid id, UsuarioDomain usuario);
+
+        void Deletar(Guid id);
     }
 }

@@ -19,6 +19,29 @@ namespace webapi.event_.manha.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+
+        //******************** ATUALIZAR
+        /// <summary>
+        /// EndPoint que aciona o método Atualizar
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="usuario"></param>
+        /// <returns> Retorna a lista de objetos atualizada </returns>
+        [HttpPut("{id}")]
+        public IActionResult Put (Guid id, UsuarioDomain usuario)
+        {
+            try
+            {
+                _usuarioRepository.Atualizar(id, usuario);
+                return StatusCode(200);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+
         //******************** CADASTRAR
         /// <summary>
         /// EndPoint que aciona o método Cadastrar
@@ -41,6 +64,7 @@ namespace webapi.event_.manha.Controllers
             }
         }
 
+
         //************************* BUSCAR POR ID
         /// <summary>
         /// EndPoint que aciona o método BuscarPorId
@@ -60,14 +84,21 @@ namespace webapi.event_.manha.Controllers
             }
         }
 
+
         //************************* BUSCAR POR EMAIL E SENHA
+        /// <summary>
+        /// EndPoint que aciona o método BuscarPorEmailESenha
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="senha"></param>
+        /// <returns> Retorna o objeto cadastrado(usuário) </returns>
         [HttpGet]
 
-        public IActionResult Get(string email, string senha) 
+        public IActionResult Get(string email, string senha)
         {
             try
             {
-                UsuarioDomain usuarioBuscado = _usuarioRepository.BuscarPorEmailESenha(email,senha);
+                UsuarioDomain usuarioBuscado = _usuarioRepository.BuscarPorEmailESenha(email, senha);
 
                 if (usuarioBuscado == null)
                 {
@@ -76,10 +107,46 @@ namespace webapi.event_.manha.Controllers
                 }
 
                 return Ok(usuarioBuscado);
-                
+
             }
             catch (Exception erro)
             {
+                return BadRequest(erro.Message);
+            }
+        }
+
+
+        //********************** LISTAR 
+        /// <summary>
+        /// EndPoint que aciona o método Listar
+        /// </summary>
+        /// <returns> Retorna a lista completa de objetos cadastrados </returns>
+        [HttpGet("todos")]
+
+        public IActionResult GetAction()
+        {
+            try
+            {
+                return Ok(_usuarioRepository.Listar());
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+        //********************** DELETAR PELO ID
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id) 
+        {
+            try
+            {
+                _usuarioRepository.Deletar(id);
+                return StatusCode(204);
+            }
+            catch (Exception erro)
+            {
+
                 return BadRequest(erro.Message);
             }
         }
