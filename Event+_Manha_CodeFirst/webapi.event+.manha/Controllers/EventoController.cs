@@ -9,27 +9,28 @@ namespace webapi.event_.manha.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class TiposEventoController : ControllerBase
+    public class EventoController : ControllerBase
     {
-        private ITiposEventoRepository _tiposEventoRepository;
-        public TiposEventoController()
+        private IEventoRepository _eventoRepository;
+
+        public EventoController()
         {
-            _tiposEventoRepository = new TiposEventoRepository();
+            _eventoRepository = new EventoRepository();
         }
 
         //********************* CADASTRAR
         /// <summary>
         /// EndPoint que aciona o metodo Cadastrar
         /// </summary>
-        /// <param name="tipoEvento"></param>
+        /// <param name="evento"></param>
         /// <returns> Cadastra um novo objeto na lista </returns>
         [HttpPost]
 
-        public IActionResult Post(TiposEventoDomain tipoEvento)
+        public IActionResult Post(EventoDomain evento)
         {
             try
             {
-                _tiposEventoRepository.Cadastrar(tipoEvento);
+                _eventoRepository.Cadastrar(evento);
 
                 return StatusCode(201);
             }
@@ -40,24 +41,24 @@ namespace webapi.event_.manha.Controllers
             }
         }
 
-        //********************* BUSCAR POR ID
-        /// <summary>
-        /// Endpoint que aciona o método BuscarPorId
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns> Retorna o objeto com o respectivo ID </returns>
-        [HttpGet("{id}")]
-        public IActionResult GetById(Guid id)
-        {
-            try
+            //********************* BUSCAR POR ID
+            /// <summary>
+            /// Endpoint que aciona o método BuscarPorId
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns> Retorna o objeto com o respectivo ID </returns>
+            [HttpGet("{id}")]
+            public IActionResult GetById(Guid id)
             {
-                return Ok(_tiposEventoRepository.BuscarPorId(id));
+                try
+                {
+                    return Ok(_eventoRepository.BuscarPorId(id));
+                }
+                catch (Exception erro)
+                {
+                    return BadRequest(erro.Message);
+                }
             }
-            catch (Exception erro)
-            {
-                return BadRequest(erro.Message);
-            }
-        }
 
         //********************* LISTAR
         /// <summary>
@@ -70,7 +71,7 @@ namespace webapi.event_.manha.Controllers
         {
             try
             {
-                return Ok(_tiposEventoRepository.Listar());
+                return Ok(_eventoRepository.Listar());
             }
             catch (Exception erro)
             {
@@ -89,7 +90,7 @@ namespace webapi.event_.manha.Controllers
         {
             try
             {
-                _tiposEventoRepository.Deletar(id);
+                _eventoRepository.Deletar(id);
 
                 return StatusCode(204);
             }
@@ -100,19 +101,20 @@ namespace webapi.event_.manha.Controllers
             }
         }
 
+
         //************************ ATUALIZAR PELO ID
         /// <summary>
         /// EndPoint que aciona o método Atualizar
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="tipoEvento"></param>
+        /// <param name="evento"></param>
         /// <returns> Retorna a lista de objetos cadastrados </returns>
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, TiposEventoDomain tipoEvento)
+        public IActionResult Put(Guid id, EventoDomain evento)
         {
             try
             {
-                _tiposEventoRepository.Atualizar(id, tipoEvento);
+                _eventoRepository.Atualizar(id, evento);
                 return StatusCode(200);
             }
             catch (Exception erro)
@@ -120,7 +122,6 @@ namespace webapi.event_.manha.Controllers
                 return BadRequest(erro.Message);
             }
         }
-
-
     }
 }
+

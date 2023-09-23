@@ -9,27 +9,28 @@ namespace webapi.event_.manha.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class TiposEventoController : ControllerBase
+    public class ComentariosEventoController : ControllerBase
     {
-        private ITiposEventoRepository _tiposEventoRepository;
-        public TiposEventoController()
+        private IComentariosEventoRepository _comentariosEventoRepository;
+
+        public ComentariosEventoController()
         {
-            _tiposEventoRepository = new TiposEventoRepository();
+            _comentariosEventoRepository = new ComentariosEventoRepository();
         }
 
         //********************* CADASTRAR
         /// <summary>
         /// EndPoint que aciona o metodo Cadastrar
         /// </summary>
-        /// <param name="tipoEvento"></param>
+        /// <param name="comentariosEvento"></param>
         /// <returns> Cadastra um novo objeto na lista </returns>
         [HttpPost]
 
-        public IActionResult Post(TiposEventoDomain tipoEvento)
+        public IActionResult Post(ComentariosEventoDomain comentariosEvento)
         {
             try
             {
-                _tiposEventoRepository.Cadastrar(tipoEvento);
+                _comentariosEventoRepository.Cadastrar(comentariosEvento);
 
                 return StatusCode(201);
             }
@@ -51,7 +52,7 @@ namespace webapi.event_.manha.Controllers
         {
             try
             {
-                return Ok(_tiposEventoRepository.BuscarPorId(id));
+                return Ok(_comentariosEventoRepository.BuscarPorId(id));
             }
             catch (Exception erro)
             {
@@ -70,7 +71,7 @@ namespace webapi.event_.manha.Controllers
         {
             try
             {
-                return Ok(_tiposEventoRepository.Listar());
+                return Ok(_comentariosEventoRepository.Listar());
             }
             catch (Exception erro)
             {
@@ -89,7 +90,7 @@ namespace webapi.event_.manha.Controllers
         {
             try
             {
-                _tiposEventoRepository.Deletar(id);
+                _comentariosEventoRepository.Deletar(id);
 
                 return StatusCode(204);
             }
@@ -105,14 +106,14 @@ namespace webapi.event_.manha.Controllers
         /// EndPoint que aciona o método Atualizar
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="tipoEvento"></param>
+        /// <param name="comentariosEvento"></param>
         /// <returns> Retorna a lista de objetos cadastrados </returns>
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, TiposEventoDomain tipoEvento)
+        public IActionResult Put(Guid id, ComentariosEventoDomain comentariosEvento)
         {
             try
             {
-                _tiposEventoRepository.Atualizar(id, tipoEvento);
+                _comentariosEventoRepository.Atualizar(id, comentariosEvento);
                 return StatusCode(200);
             }
             catch (Exception erro)
@@ -120,7 +121,5 @@ namespace webapi.event_.manha.Controllers
                 return BadRequest(erro.Message);
             }
         }
-
-
     }
 }

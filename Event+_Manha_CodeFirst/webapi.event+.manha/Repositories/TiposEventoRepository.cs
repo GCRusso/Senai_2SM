@@ -1,9 +1,10 @@
 ﻿using webapi.event_.manha.Contexts;
 using webapi.event_.manha.Domains;
+using webapi.event_.manha.Interfaces;
 
 namespace webapi.event_.manha.Repositories
 {
-    public class TiposEventoRepository
+    public class TiposEventoRepository : ITiposEventoRepository
     {
         private readonly EventoContext _eventoContext;
         public TiposEventoRepository()
@@ -71,5 +72,6 @@ namespace webapi.event_.manha.Repositories
             _eventoContext.Update(tipoEventoBuscado);
             _eventoContext.SaveChanges();
         }
+
     }
 }

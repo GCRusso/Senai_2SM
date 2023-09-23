@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static webapi.event_.manha.Domains.UsuarioDomain;
 
 namespace webapi.event_.manha.Domains
 {

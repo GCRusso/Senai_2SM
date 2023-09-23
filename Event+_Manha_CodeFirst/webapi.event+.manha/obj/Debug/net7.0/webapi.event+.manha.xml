@@ -4,6 +4,156 @@
         <name>webapi.event+.manha</name>
     </assembly>
     <members>
+        <member name="M:webapi.event_.manha.Controllers.ComentariosEventoController.Post(webapi.event_.manha.Domains.ComentariosEventoDomain)">
+            <summary>
+            EndPoint que aciona o metodo Cadastrar
+            </summary>
+            <param name="comentariosEvento"></param>
+            <returns> Cadastra um novo objeto na lista </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.ComentariosEventoController.GetById(System.Guid)">
+            <summary>
+            Endpoint que aciona o método BuscarPorId
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna o objeto com o respectivo ID </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.ComentariosEventoController.Get">
+            <summary>
+            EndPoint que aciona o método Listar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.ComentariosEventoController.Delete(System.Guid)">
+            <summary>
+            EndPoint que aciona o método Deletar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.ComentariosEventoController.Put(System.Guid,webapi.event_.manha.Domains.ComentariosEventoDomain)">
+            <summary>
+            EndPoint que aciona o método Atualizar
+            </summary>
+            <param name="id"></param>
+            <param name="comentariosEvento"></param>
+            <returns> Retorna a lista de objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.EventoController.Post(webapi.event_.manha.Domains.EventoDomain)">
+            <summary>
+            EndPoint que aciona o metodo Cadastrar
+            </summary>
+            <param name="evento"></param>
+            <returns> Cadastra um novo objeto na lista </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.EventoController.GetById(System.Guid)">
+            <summary>
+            Endpoint que aciona o método BuscarPorId
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna o objeto com o respectivo ID </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.EventoController.Get">
+            <summary>
+            EndPoint que aciona o método Listar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.EventoController.Delete(System.Guid)">
+            <summary>
+            EndPoint que aciona o método Deletar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.EventoController.Put(System.Guid,webapi.event_.manha.Domains.EventoDomain)">
+            <summary>
+            EndPoint que aciona o método Atualizar
+            </summary>
+            <param name="id"></param>
+            <param name="evento"></param>
+            <returns> Retorna a lista de objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.InstituicaoController.Post(webapi.event_.manha.Domains.InstituicaoDomain)">
+            <summary>
+            EndPoint que aciona o metodo Cadastrar
+            </summary>
+            <param name="instituicao"></param>
+            <returns> Cadastra um novo objeto na lista </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.PresencasEventoController.Get">
+            <summary>
+            Endpoint que aciona o método Listar 
+            </summary>
+            <returns> Lista de objetos </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.PresencasEventoController.Post(webapi.event_.manha.Domains.PresencasEventoDomain)">
+            <summary>
+            Endpoint que aciona o método Cadastrar
+            </summary>
+            <param name="presencasEvento"></param>
+            <returns> Retorna a lista de objeto cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.PresencasEventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint que aciona o método Delete
+            </summary>
+            <param name="id"></param>
+            <returns> Deleta um objeto da lista </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.PresencasEventoController.Put(System.Guid,webapi.event_.manha.Domains.PresencasEventoDomain)">
+            <summary>
+            Endpoint que aciona o método Atualizar
+            </summary>
+            <param name="id"></param>
+            <param name="presencasEvento"></param>
+            <returns> Retorna a lista de objetos </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.PresencasEventoController.GetWithUser(System.Guid)">
+            <summary>
+            Endpoint que aciona o Método ListarPresenca
+            </summary>
+            <param name="id"></param>
+            <returns> lista de presenças do usuário buscado </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.TiposEventoController.Post(webapi.event_.manha.Domains.TiposEventoDomain)">
+            <summary>
+            EndPoint que aciona o metodo Cadastrar
+            </summary>
+            <param name="tipoEvento"></param>
+            <returns> Cadastra um novo objeto na lista </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.TiposEventoController.GetById(System.Guid)">
+            <summary>
+            Endpoint que aciona o método BuscarPorId
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna o objeto com o respectivo ID </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.TiposEventoController.Get">
+            <summary>
+            EndPoint que aciona o método Listar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.TiposEventoController.Delete(System.Guid)">
+            <summary>
+            EndPoint que aciona o método Deletar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:webapi.event_.manha.Controllers.TiposEventoController.Put(System.Guid,webapi.event_.manha.Domains.TiposEventoDomain)">
+            <summary>
+            EndPoint que aciona o método Atualizar
+            </summary>
+            <param name="id"></param>
+            <param name="tipoEvento"></param>
+            <returns> Retorna a lista de objetos cadastrados </returns>
+        </member>
         <member name="M:webapi.event_.manha.Controllers.TiposUsuarioController.Post(webapi.event_.manha.Domains.TiposUsuarioDomain)">
             <summary>
             EndPoint que aciona o metodo Cadastrar
@@ -86,6 +236,18 @@
             <inheritdoc />
         </member>
         <member name="M:webapi.event_.manha.Migrations.BD.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:webapi.event_.manha.Migrations.BD_CS">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.manha.Migrations.BD_CS.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.manha.Migrations.BD_CS.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.manha.Migrations.BD_CS.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>
