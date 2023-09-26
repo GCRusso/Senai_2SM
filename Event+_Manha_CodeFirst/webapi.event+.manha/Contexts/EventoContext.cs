@@ -15,8 +15,8 @@ namespace webapi.event_.manha.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Data Source= NOTE17-S15; Initial Catalog= Event+_Manha; User Id= sa; pwd = Senai@134; TrustServerCertificate = true;");
-            optionsBuilder.UseSqlServer("Data Source= GCRUSSO; Initial Catalog= Event+_Manha; Integrated Security = true; TrustServerCertificate = true;");
+            optionsBuilder.UseSqlServer("Data Source= NOTE17-S15; Initial Catalog= Event+_Manha; User Id= sa; pwd = Senai@134; TrustServerCertificate = true;");
+            //optionsBuilder.UseSqlServer("Data Source= GCRUSSO; Initial Catalog= Event+_Manha; Integrated Security = true; TrustServerCertificate = true;");
             base.OnConfiguring(optionsBuilder);
         }
     }
