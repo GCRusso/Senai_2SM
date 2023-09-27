@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HealthClinic_API.Domains
 {
-    [[Table(nameof(Especialidade))]
+    [Table(nameof(Especialidade))]
+    [Index(nameof(NomeEspecialidade), IsUnique = true)]
     public class Especialidade
     {
         [Key]
@@ -11,6 +13,6 @@ namespace HealthClinic_API.Domains
 
         [Column(TypeName = "VARCHAR(50)")]
         [Required(ErrorMessage = "A Especialidade é obrigatório!")]
-        public string? Nome { get; set; }
+        public string? NomeEspecialidade { get; set; }
     }
 }

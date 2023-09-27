@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HealthClinic_API.Domains
 {
-    [[Table(nameof(Clinica))]
+    [Table(nameof(Clinica))]
     [Index(nameof(CNPJ), IsUnique = true)]
     public class Clinica
     {

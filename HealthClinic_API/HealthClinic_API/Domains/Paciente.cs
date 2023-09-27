@@ -27,12 +27,13 @@ namespace HealthClinic_API.Domains
         [Required(ErrorMessage = "A Data de nascimento é obrigatório!")]
         public DateTime? DataNascimento { get; set; }
 
-        //ref.Tabela TiposUsuario = FK
+
+
+        //ref.Tabela USUARIO
         [Required(ErrorMessage = "Informe o usuário!")]
-        public Guid IdUsuario { get; set; }
+        public Guid? IdUsuario { get; set; }
 
         [ForeignKey(nameof(IdUsuario))]
-        //[ForeignKey("IdTipoUsuario")] ambos fazem o mesmo papel
         public Usuario? Usuario { get; set; }
     }
 }

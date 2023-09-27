@@ -24,12 +24,13 @@ namespace HealthClinic_API.Domains
         [Required(ErrorMessage = "Nome obrigatório!")]
         public string? Nome { get; set; }
 
-        //ref.Tabela TiposUsuario = FK
+
+
+        //ref.Tabela TIPOS DE USUARIO
         [Required(ErrorMessage = "Informe o tipo do usuário!")]
         public Guid IdTipoDeUsuario { get; set; }
 
         [ForeignKey(nameof(IdTipoDeUsuario))]
-        //[ForeignKey("IdTipoUsuario")] ambos fazem o mesmo papel
         public TiposDeUsuario? TiposDeUsuario { get; set; }
 
     }

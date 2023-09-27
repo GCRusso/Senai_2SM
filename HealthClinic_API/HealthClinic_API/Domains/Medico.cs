@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HealthClinic_API.Domains
 {
-    [[Table(nameof(Medico))]
+    [Table(nameof(Medico))]
+    [Index(nameof(CRM), IsUnique = true)]
     public class Medico
     {
         [Key]
@@ -13,6 +15,9 @@ namespace HealthClinic_API.Domains
         [Required(ErrorMessage = "O CRM é obrigatório!")]
         public string? CRM { get; set; }
 
+
+
+
         //ref.Tabela ESPECIALIDADE
         [Required(ErrorMessage = "Informe a especialidade!")]
         public Guid IdEspecialidade { get; set; }
@@ -20,12 +25,16 @@ namespace HealthClinic_API.Domains
         [ForeignKey(nameof(IdEspecialidade))]
         public Especialidade? Especialidade { get; set; }
 
+
+
         //ref.Tabela CLINICA
         [Required(ErrorMessage = "Informe a clinica!")]
         public Guid IdClinica { get; set; }
 
         [ForeignKey(nameof(IdClinica))]
         public Clinica? Clinica { get; set; }
+
+
 
         //ref.Tabela USUARIO
         [Required(ErrorMessage = "Informe o usuário!")]
