@@ -7799,19 +7799,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\23655858841\\.nuget\\packages\\": {}
+    "C:\\Users\\T-Gamer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\23655858841\\Desktop\\Senai_2SM\\HealthClinic_API\\HealthClinic_API\\HealthClinic_API.csproj",
+      "projectUniqueName": "C:\\Users\\T-Gamer\\Desktop\\Senai_2SM\\HealthClinic_API\\HealthClinic_API\\HealthClinic_API.csproj",
       "projectName": "HealthClinic_API",
-      "projectPath": "C:\\Users\\23655858841\\Desktop\\Senai_2SM\\HealthClinic_API\\HealthClinic_API\\HealthClinic_API.csproj",
-      "packagesPath": "C:\\Users\\23655858841\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\23655858841\\Desktop\\Senai_2SM\\HealthClinic_API\\HealthClinic_API\\obj\\",
+      "projectPath": "C:\\Users\\T-Gamer\\Desktop\\Senai_2SM\\HealthClinic_API\\HealthClinic_API\\HealthClinic_API.csproj",
+      "packagesPath": "C:\\Users\\T-Gamer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\T-Gamer\\Desktop\\Senai_2SM\\HealthClinic_API\\HealthClinic_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\23655858841\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\T-Gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7891,7 +7891,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

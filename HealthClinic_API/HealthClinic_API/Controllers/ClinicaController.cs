@@ -73,9 +73,13 @@ namespace HealthClinic_API.Controllers
         {
             try
             {
-                _clinicaRepository.Cadastrar(clinica);
+                if (clinica != null)
+                {
+                    _clinicaRepository.Cadastrar(clinica);
 
-                return StatusCode(201);
+                    return StatusCode(201);
+                }
+                return Ok("Clinica não foi inserida corretamente");
             }
             catch (Exception erro)
             {
