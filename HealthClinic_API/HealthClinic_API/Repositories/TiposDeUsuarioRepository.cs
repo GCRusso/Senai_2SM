@@ -16,8 +16,8 @@ namespace HealthClinic_API.Repositories
         //**************************** CADASTRAR
         public void Cadastrar(TiposDeUsuario tiposDeUsuario)
         {
+            tiposDeUsuario.IdTipoDeUsuario = Guid.NewGuid();
             _healthContext.TiposDeUsuario.Add(tiposDeUsuario);
-
             _healthContext.SaveChanges();
         }
 

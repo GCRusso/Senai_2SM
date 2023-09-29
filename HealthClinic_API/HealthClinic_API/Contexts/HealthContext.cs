@@ -17,8 +17,8 @@ namespace HealthClinic_API.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Data Source= NOTE17-S15; Initial Catalog= HealthClinic_Gabriel; User Id= sa; pwd = Senai@134; TrustServerCertificate = true;");
-            optionsBuilder.UseSqlServer("Data Source= GCRUSSO; Initial Catalog= HealthClinic_Gabriel; Integrated Security = true; TrustServerCertificate = true;");
+            optionsBuilder.UseSqlServer("Data Source= NOTE17-S15; Initial Catalog= HealthClinic_Gabriel; User Id= sa; pwd = Senai@134; TrustServerCertificate = true;");
+           // optionsBuilder.UseSqlServer("Data Source= GCRUSSO; Initial Catalog= HealthClinic_Gabriel; Integrated Security = true; TrustServerCertificate = true;");
             base.OnConfiguring(optionsBuilder);
         }
     }

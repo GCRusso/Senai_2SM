@@ -1,3 +1,4 @@
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -5,6 +6,43 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
+
+
+//Adiciona serviço de JWT Bearer (Forma de autenticação)
+builder.Services.AddAuthentication(Options =>
+{
+    Options.DefaultChallengeScheme = "JwtBearer";
+    Options.DefaultAuthenticateScheme = "JwtBearer";
+})
+
+.AddJwtBearer("JwtBearer", options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        //Valida quem está solicitando
+        ValidateIssuer = true,
+
+        //Valida que está recebendo
+        ValidateAudience = true,
+
+        //Define se o tempo de expiração será validado
+        ValidateLifetime = true,
+
+        //Forma de criptografia e valida a chave de autenticação
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("healthclinic-webapi-chaves-autenticacao-webapi-dev")),
+
+        //Valida o tempo de expiração do token
+        ClockSkew = TimeSpan.FromMinutes(5),
+
+        //Nome do issuer (De onde está vindo)
+        ValidIssuer = "HealthClinic_API",
+
+        //Nome do audience (Para Onde está indo)
+        ValidAudience = "HealthClinic_API"
+    };
+
+});
+
 
 //Adicione o gerador do swagger á coleção de serviços e editar os nomes
 builder.Services.AddSwaggerGen(options =>
@@ -70,9 +108,6 @@ app.UseSwaggerUI(options =>
 });
 // Termina a configuracao do SWAGGERS
 
-//Adiciona o mapeamento dos controllers
-app.MapControllers();
-
 // Aqui adiciona autenticação 
 app.UseAuthentication();
 
@@ -82,45 +117,10 @@ app.UseAuthorization();
 
 app.UseHttpsRedirection();
 
-app.Run();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
+// Aqui adiciona autorização
 app.UseAuthorization();
 
+//Adiciona o mapeamento dos controllers
 app.MapControllers();
 
-app.Run();*/
+app.Run();

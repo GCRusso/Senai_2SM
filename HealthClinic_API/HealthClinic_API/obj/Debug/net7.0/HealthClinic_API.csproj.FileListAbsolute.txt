@@ -166,3 +166,5 @@ C:\Users\T-Gamer\Desktop\Senai_2SM\HealthClinic_API\HealthClinic_API\obj\Debug\n
 C:\Users\T-Gamer\Desktop\Senai_2SM\HealthClinic_API\HealthClinic_API\obj\Debug\net7.0\ref\HealthClinic_API.dll
 C:\Users\T-Gamer\Desktop\Senai_2SM\HealthClinic_API\HealthClinic_API\bin\Debug\net7.0\HealthClinic_API.xml
 C:\Users\T-Gamer\Desktop\Senai_2SM\HealthClinic_API\HealthClinic_API\obj\Debug\net7.0\HealthClinic_API.xml
+C:\Users\23655858841\Desktop\Senai_2SM\HealthClinic_API\HealthClinic_API\obj\Debug\net7.0\HealthClinic_API.xml
+C:\Users\23655858841\Desktop\Senai_2SM\HealthClinic_API\HealthClinic_API\bin\Debug\net7.0\HealthClinic_API.xml

@@ -1,6 +1,7 @@
 ﻿using HealthClinic_API.Contexts;
 using HealthClinic_API.Domains;
 using HealthClinic_API.Interfaces;
+using webapi.event_.manha.Utils;
 
 namespace HealthClinic_API.Repositories
 {
@@ -67,8 +68,9 @@ namespace HealthClinic_API.Repositories
         //**************************** CADASTRAR
         public void Cadastrar(Usuario usuario)
         {
+            usuario.IdUsuario = Guid.NewGuid();
+            usuario.Senha = Criptografia.GerarHash(usuario.Senha!);
             _healthContext.Usuario.Add(usuario);
-
             _healthContext.SaveChanges();
         }
 

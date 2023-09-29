@@ -63,6 +63,7 @@ namespace HealthClinic_API.Repositories
         //**************************** CADASTRAR
         public void Cadastrar(Clinica clinica)
         {
+             clinica.IdClinica = Guid.NewGuid();
             _healthContext.Clinica.Add(clinica);
 
             _healthContext.SaveChanges();
