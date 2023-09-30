@@ -13,7 +13,7 @@ namespace HealthClinic_API.Contexts
         public DbSet<Paciente> Paciente { get; set; }
         public DbSet<TiposDeUsuario> TiposDeUsuario { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
-
+        public object ComentariosConsulta { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

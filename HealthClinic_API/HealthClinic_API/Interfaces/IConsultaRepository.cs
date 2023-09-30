@@ -13,9 +13,9 @@ namespace HealthClinic_API.Interfaces
 
         void Atualizar(Guid id, Consulta consulta);
 
-        List<Clinica> ListarPorPaciente(Guid id);
+        List<Consulta> ListarPorPaciente(Guid id);
 
-        List<Clinica> ListarPorMedico(Guid id);
+        List<Consulta> ListarPorMedico(Guid id);
 
     }
 }
