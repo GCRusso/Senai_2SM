@@ -13,6 +13,11 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** ATUALIZAR
+        /// <summary>
+        /// Método que atualiza uma consulta cadastrada
+        /// </summary>
+        /// <param name="id">id consulta</param>
+        /// <param name="consulta"> lista de consulta </param>
         public void Atualizar(Guid id, Consulta consulta)
         {
             Consulta consultaBuscada = _healthContext.Consulta.Find(id)!;
@@ -30,6 +35,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** CADASTRAR
+        /// <summary>
+        /// Método que cadastra uma nova consulta
+        /// </summary>
+        /// <param name="consulta"> lista de consultas </param>
         public void Cadastrar(Consulta consulta)
         {
             consulta.IdConsulta = Guid.NewGuid();
@@ -39,6 +48,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** DELETAR
+        /// <summary>
+        /// Método que deleta uma consulta cadastrada pelo seu id
+        /// </summary>
+        /// <param name="id">id consulta</param>
         public void Deletar(Guid id)
         {
             Consulta consulta = _healthContext.Consulta.Find(id)!;
@@ -47,6 +60,11 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** LISTAR POR MEDICO
+        /// <summary>
+        /// Método que lista as consultas por médico
+        /// </summary>
+        /// <param name="id"> id medico </param>
+        /// <returns> lista de consultas por medico </returns>
         public List<Consulta> ListarPorMedico(Guid id)
         {
             List<Consulta> lista = new List<Consulta>();
@@ -63,6 +81,11 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** LISTAR POR PACIENTE
+        /// <summary>
+        /// Método que lista as consultas por paciente
+        /// </summary>
+        /// <param name="id"> id paciente </param>
+        /// <returns> lista de consultas por paciente </returns>
         public List<Consulta> ListarPorPaciente(Guid id)
         {
             List<Consulta> lista = new List<Consulta>();
@@ -79,6 +102,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** LISTAR TODOS
+        /// <summary>
+        /// Método que lista todas as consultas cadastradas
+        /// </summary>
+        /// <returns> lista com todas as consultas </returns>
         public List<Consulta> ListarTodos()
         {
             return _healthContext.Consulta.ToList();

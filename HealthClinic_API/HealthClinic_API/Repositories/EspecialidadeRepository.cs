@@ -8,11 +8,15 @@ namespace HealthClinic_API.Repositories
     {
         private readonly HealthContext _healthContext;
         public EspecialidadeRepository()
-        {   
+        {
             _healthContext = new HealthContext();
         }
 
         //**************************** CADASTRAR
+        /// <summary>
+        /// Método que cadastra uma nova especialidade
+        /// </summary>
+        /// <param name="especialidade"> Id especialidade </param>
         public void Cadastrar(Especialidade especialidade)
         {
             try
@@ -29,6 +33,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** DELETAR
+        /// <summary>
+        /// Método que deleta uma especialidade pelo seu id
+        /// </summary>
+        /// <param name="id"> id especialidade </param>
         public void Deletar(Guid id)
         {
             Especialidade especialidade = _healthContext.Especialidade.Find(id)!;
@@ -37,6 +45,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** LISTAR
+        /// <summary>
+        /// Método que lista todas as especialidades cadastradas
+        /// </summary>
+        /// <returns> lista de especialidades </returns>
         public List<Especialidade> Listar()
         {
             return _healthContext.Especialidade.ToList();

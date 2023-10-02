@@ -14,6 +14,11 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** ATUALIZAR
+        /// <summary>
+        /// Método para atualizar usuário
+        /// </summary>
+        /// <param name="id"> id de usuário </param>
+        /// <param name="usuario"> lista de usuario </param>
         public void Atualizar(Guid id, Usuario usuario)
         {
             Usuario usuarioBuscado = _healthContext.Usuario.Find(id)!;
@@ -29,6 +34,12 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** BUSCAR POR EMAIL E SENHA
+        /// <summary>
+        /// Método para buscar por email e senha (login)
+        /// </summary>
+        /// <param name="email"> email do usuario </param>
+        /// <param name="senha"> senha do usuario </param>
+        /// <returns></returns>
         public Usuario BuscarPorEmailESenha(string email, string senha)
         {
             try
@@ -66,6 +77,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** CADASTRAR
+        /// <summary>
+        /// Método para cadastrar um novo usuario
+        /// </summary>
+        /// <param name="usuario"> lista de usuário </param>
         public void Cadastrar(Usuario usuario)
         {
             usuario.IdUsuario = Guid.NewGuid();
@@ -75,6 +90,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** DELETAR
+        /// <summary>
+        /// Método que deleta o usuário buscando pelo seu id
+        /// </summary>
+        /// <param name="id"> id de usuário </param>
         public void Deletar(Guid id)
         {
             Usuario usuario = _healthContext.Usuario.Find(id)!;
@@ -83,6 +102,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** LISTAR
+        /// <summary>
+        /// Método que lista todos os usuários cadastrados
+        /// </summary>
+        /// <returns></returns>
         public List<Usuario> Listar()
         {
             return _healthContext.Usuario.ToList();

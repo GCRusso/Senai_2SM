@@ -13,6 +13,11 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** ATUALIZAR
+        /// <summary>
+        /// Método que atualiza os dados de um medico
+        /// </summary>
+        /// <param name="id"> id de medico</param>
+        /// <param name="medico"> lista de medicos </param>
         public void Atualizar(Guid id, Medico medico)
         {
             Medico medicoBuscado = _healthContext.Medico.Find(id)!;
@@ -30,6 +35,11 @@ namespace HealthClinic_API.Repositories
 
 
             //**************************** BUSCAR POR ID
+            /// <summary>
+            /// Método para buscar um medico pelo seu id
+            /// </summary>
+            /// <param name="id"> id de medico </param>
+            /// <returns> todos os dados de um medico cadastrado </returns>
             public Medico BuscarPorId(Guid id)
             {
                 try
@@ -58,6 +68,10 @@ namespace HealthClinic_API.Repositories
             }
 
         //**************************** CADASTRAR
+        /// <summary>
+        /// Método que cadastra um novo médico na lista
+        /// </summary>
+        /// <param name="medico"> id de medico </param>
         public void Cadastrar(Medico medico)
         {
             medico.IdMedico = Guid.NewGuid();
@@ -67,6 +81,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** DELETAR
+        /// <summary>
+        /// Método que deleta o medico buscando pelo seu id
+        /// </summary>
+        /// <param name="id"> id medico </param>
         public void Deletar(Guid id)
         {
             Medico medico = _healthContext.Medico.Find(id)!;
@@ -75,6 +93,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** LISTAR
+        /// <summary>
+        /// Método que lista todos os médicos cadastrados
+        /// </summary>
+        /// <returns> Lista de médicos </returns>
         public List<Medico> Listar()
         {
             return _healthContext.Medico.ToList();

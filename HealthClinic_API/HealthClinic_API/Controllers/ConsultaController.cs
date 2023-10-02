@@ -106,6 +106,8 @@ namespace HealthClinic_API.Controllers
                 return BadRequest(erro.Message);
             }
         }
+
+        // ********************** LISTAR POR MEDICO
         /// <summary>
         /// Endpoint que aciona o método ListarPorMedico
         /// </summary>
@@ -125,6 +127,7 @@ namespace HealthClinic_API.Controllers
             }
         }
 
+        // ************************** LISTAR POR PACIENTE
         /// <summary>
         /// Endpoint que aciona o método Listar Por Paciente
         /// </summary>

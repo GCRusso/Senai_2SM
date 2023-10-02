@@ -13,6 +13,11 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** ATUALIZAR
+        /// <summary>
+        /// Método que atualiza uma clinica cadastrada
+        /// </summary>
+        /// <param name="id"> id clinica </param>
+        /// <param name="clinica"> lista de clinica </param>
         public void Atualizar(Guid id, Clinica clinica)
         {
             Clinica clinicaBuscada = _healthContext.Clinica.Find(id)!;
@@ -31,6 +36,11 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** BUSCAR POR ID
+        /// <summary>
+        /// Método que a clinica pelo seu id
+        /// </summary>
+        /// <param name="id"> id clinica </param>
+        /// <returns> Todos os dados da clinica cadastrada </returns>
         public Clinica BuscarPorId(Guid id)
         {
             try
@@ -40,12 +50,12 @@ namespace HealthClinic_API.Repositories
                     {
                         IdClinica = u.IdClinica,
                         NomeFantasia = u.NomeFantasia,
-                        Endereco= u.Endereco,
-                        RazaoSocial= u.RazaoSocial,
-                        HorarioAbertura= u.HorarioAbertura,
-                        HorarioFechamento= u.HorarioFechamento,
+                        Endereco = u.Endereco,
+                        RazaoSocial = u.RazaoSocial,
+                        HorarioAbertura = u.HorarioAbertura,
+                        HorarioFechamento = u.HorarioFechamento,
                         CNPJ = u.CNPJ,
-                }).FirstOrDefault(u => u.IdClinica == id)!;
+                    }).FirstOrDefault(u => u.IdClinica == id)!;
 
                 if (clinicaBuscada != null)
                 {
@@ -61,6 +71,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** CADASTRAR
+        /// <summary>
+        /// Método que cadastra uma nova clinica
+        /// </summary>
+        /// <param name="clinica"> lista de clinica </param>
         public void Cadastrar(Clinica clinica)
         {
              clinica.IdClinica = Guid.NewGuid();
@@ -70,6 +84,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** DELETAR
+        /// <summary>
+        /// Método que deleta uma clinica buscando pelo seu id
+        /// </summary>
+        /// <param name="id"> id clinica </param>
         public void Deletar(Guid id)
         {
             Clinica clinica= _healthContext.Clinica.Find(id)!;
@@ -78,6 +96,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** LISTAR TODOS
+        /// <summary>
+        /// Método que lista todos as clinicas cadastradas
+        /// </summary>
+        /// <returns> Lista de clinicas </returns>
         public List<Clinica> Listar()
         {
             return _healthContext.Clinica.ToList();

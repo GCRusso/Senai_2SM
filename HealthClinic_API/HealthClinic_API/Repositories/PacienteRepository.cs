@@ -13,6 +13,11 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** ATUALIZAR
+        /// <summary>
+        /// Método que atualiza os dados de um paciente
+        /// </summary>
+        /// <param name="id"> id de paciente </param>
+        /// <param name="paciente"> lista de pacientes </param>
         public void Atualizar(Guid id, Paciente paciente)
         {
             Paciente pacienteBuscado = _healthContext.Paciente.Find(id)!;
@@ -30,6 +35,11 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** BUSCAR POR ID
+        /// <summary>
+        /// Método que busca o paciente pelo seu id
+        /// </summary>
+        /// <param name="id"> id de paciente </param>
+        /// <returns> todos os dados do paciente buscado </returns>
         public Paciente BuscarPorId(Guid id)
         {
             try
@@ -38,10 +48,10 @@ namespace HealthClinic_API.Repositories
                     .Select(u => new Paciente
                     {
                         IdPaciente = u.IdPaciente,
-                        CPF= u.CPF,
-                        Genero= u.Genero,
-                        DataNascimento= u.DataNascimento,
-                        IdUsuario= u.IdUsuario,
+                        CPF = u.CPF,
+                        Genero = u.Genero,
+                        DataNascimento = u.DataNascimento,
+                        IdUsuario = u.IdUsuario,
 
                     }).FirstOrDefault(u => u.IdPaciente == id)!;
 
@@ -59,6 +69,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** CADASTRAR
+        /// <summary>
+        /// Método para cadastrar um novo paciente
+        /// </summary>
+        /// <param name="paciente"> lista de pacientes </param>
         public void Cadastrar(Paciente paciente)
         {
             paciente.IdPaciente = Guid.NewGuid();
@@ -68,6 +82,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** DELETAR
+        /// <summary>
+        /// Método para deletar o paciente buscando pelo seu id
+        /// </summary>
+        /// <param name="id"> id do paciente </param>
         public void Deletar(Guid id)
         {
             Paciente paciente = _healthContext.Paciente.Find(id)!;
@@ -76,6 +94,10 @@ namespace HealthClinic_API.Repositories
         }
 
         //**************************** LISTAR
+        /// <summary>
+        /// Método para listar todos os pacientes cadastrados
+        /// </summary>
+        /// <returns> lista de pacientes </returns>
         public List<Paciente> Listar()
         {
             return _healthContext.Paciente.ToList();

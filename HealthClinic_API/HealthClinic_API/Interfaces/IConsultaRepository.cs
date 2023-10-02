@@ -9,7 +9,7 @@ namespace HealthClinic_API.Interfaces
 
         void Deletar(Guid id);
 
-        List<Clinica> ListarTodos();
+        List<Consulta> ListarTodos();
 
         void Atualizar(Guid id, Consulta consulta);
 

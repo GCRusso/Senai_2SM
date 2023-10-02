@@ -39,6 +39,76 @@
             </summary>
             <returns> lista de objetos </returns>
         </member>
+        <member name="M:HealthClinic_API.Controllers.ComentariosConsultaController.Post(HealthClinic_API.Domains.ComentariosConsulta)">
+            <summary>
+            EndPoint que aciona o metodo Cadastrar
+            </summary>
+            <param name="comentariosConsulta"></param>
+            <returns> Cadastra um novo objeto na lista </returns>
+        </member>
+        <member name="M:HealthClinic_API.Controllers.ComentariosConsultaController.Delete(System.Guid)">
+            <summary>
+            EndPoint que aciona o método Deletar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:HealthClinic_API.Controllers.ComentariosConsultaController.Get">
+            <summary>
+            Endpoint que aciona o método LISTAR
+            </summary>
+            <returns> lista de objetos </returns>
+        </member>
+        <member name="M:HealthClinic_API.Controllers.ComentariosConsultaController.Put(System.Guid,HealthClinic_API.Domains.ComentariosConsulta)">
+            <summary>
+            Endpoint que aciona o método ATUALIZAR
+            </summary>
+            <param name="id"></param>
+            <param name="comentariosConsulta"></param>
+            <returns> Lista com objeto atualizado </returns>
+        </member>
+        <member name="M:HealthClinic_API.Controllers.ConsultaController.Put(System.Guid,HealthClinic_API.Domains.Consulta)">
+            <summary>
+            Endpoint que aciona o método ATUALIZAR
+            </summary>
+            <param name="id"></param>
+            <param name="consulta"></param>
+            <returns> Lista com objeto atualizado </returns>
+        </member>
+        <member name="M:HealthClinic_API.Controllers.ConsultaController.Post(HealthClinic_API.Domains.Consulta)">
+            <summary>
+            EndPoint que aciona o metodo Cadastrar
+            </summary>
+            <param name="consulta"></param>
+            <returns> Cadastra um novo objeto na lista </returns>
+        </member>
+        <member name="M:HealthClinic_API.Controllers.ConsultaController.Delete(System.Guid)">
+            <summary>
+            EndPoint que aciona o método Deletar
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista com os objetos cadastrados </returns>
+        </member>
+        <member name="M:HealthClinic_API.Controllers.ConsultaController.Get">
+            <summary>
+            Endpoint que aciona o método LISTAR
+            </summary>
+            <returns> lista de objetos </returns>
+        </member>
+        <member name="M:HealthClinic_API.Controllers.ConsultaController.ListarPorMedico(System.Guid)">
+            <summary>
+            Endpoint que aciona o método ListarPorMedico
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista de objetos </returns>
+        </member>
+        <member name="M:HealthClinic_API.Controllers.ConsultaController.ListarPorPaciente(System.Guid)">
+            <summary>
+            Endpoint que aciona o método Listar Por Paciente
+            </summary>
+            <param name="id"></param>
+            <returns> Retorna a lista de objetos </returns>
+        </member>
         <member name="M:HealthClinic_API.Controllers.EspecialidadeController.Post(HealthClinic_API.Domains.Especialidade)">
             <summary>
             EndPoint que aciona o metodo Cadastrar
