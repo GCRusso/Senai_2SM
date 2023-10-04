@@ -129,6 +129,13 @@
             </summary>
             <returns> lista de objetos </returns>
         </member>
+        <member name="M:HealthClinic_API.Controllers.LoginController.Post(HealthClinic_API.ViewModel.LoginViewModel)">
+            <summary>
+            Endpoint que aciona o método Login
+            </summary>
+            <param name="usuario"></param>
+            <returns> Usuário logado </returns>
+        </member>
         <member name="M:HealthClinic_API.Controllers.MedicoController.Put(System.Guid,HealthClinic_API.Domains.Medico)">
             <summary>
             Endpoint que aciona o método ATUALIZAR

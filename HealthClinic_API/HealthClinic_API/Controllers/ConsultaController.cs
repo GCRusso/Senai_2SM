@@ -1,8 +1,10 @@
 ﻿using HealthClinic_API.Domains;
 using HealthClinic_API.Interfaces;
 using HealthClinic_API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace HealthClinic_API.Controllers
 {
@@ -25,6 +27,7 @@ namespace HealthClinic_API.Controllers
         /// <param name="consulta"></param>
         /// <returns> Lista com objeto atualizado </returns>
         [HttpPut("{id}")]
+        //[Authorize(Roles = "Administrador")]
 
         public IActionResult Put(Guid id, Consulta consulta)
         {
@@ -47,6 +50,7 @@ namespace HealthClinic_API.Controllers
         /// <param name="consulta"></param>
         /// <returns> Cadastra um novo objeto na lista </returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
 
         public IActionResult Post(Consulta consulta)
         {
@@ -74,6 +78,7 @@ namespace HealthClinic_API.Controllers
         /// <param name="id"></param>
         /// <returns> Retorna a lista com os objetos cadastrados </returns>
         [HttpDelete("{id}")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try
@@ -95,6 +100,7 @@ namespace HealthClinic_API.Controllers
         /// </summary>
         /// <returns> lista de objetos </returns>
         [HttpGet]
+       //[Authorize(Roles = "Administrador")]
         public IActionResult Get()
         {
             try
@@ -114,6 +120,7 @@ namespace HealthClinic_API.Controllers
         /// <param name="id"></param>
         /// <returns> Retorna a lista de objetos </returns>
         [HttpGet("Medico")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult ListarPorMedico(Guid id)
         {
             try

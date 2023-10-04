@@ -26,6 +26,7 @@ namespace HealthClinic_API.Controllers
         /// <param name="usuario"></param>
         /// <returns> Retorna a lista de objetos atualizada </returns>
         [HttpPut("{id}")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Put(Guid id, Usuario usuario)
         {
             try
@@ -46,6 +47,7 @@ namespace HealthClinic_API.Controllers
         /// <param name="usuario"></param>
         /// <returns> Adiciona um novo objeto na lista UsuarioDomain </returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Post(Usuario usuario)
         {
             try
@@ -67,6 +69,7 @@ namespace HealthClinic_API.Controllers
         /// </summary>
         /// <returns> Retorna a lista completa de objetos cadastrados </returns>
         [HttpGet("todos")]
+        //[Authorize(Roles = "Administrador")]
 
         public IActionResult GetAction()
         {
@@ -87,6 +90,7 @@ namespace HealthClinic_API.Controllers
         /// <param name="id"></param>
         /// <returns> Objeto deletado </returns>S
         [HttpDelete("{id}")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try

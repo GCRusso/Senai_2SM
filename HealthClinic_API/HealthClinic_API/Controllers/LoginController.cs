@@ -21,7 +21,11 @@ namespace HealthClinic_API.Controllers
         {
             _usuarioRepository = new UsuarioRepository();
         }
-
+        /// <summary>
+        /// Endpoint que aciona o método Login
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns> Usuário logado </returns>
         [HttpPost]
         public IActionResult Post(LoginViewModel usuario)
         {
