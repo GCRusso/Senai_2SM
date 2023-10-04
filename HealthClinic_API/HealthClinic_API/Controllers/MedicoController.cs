@@ -77,7 +77,7 @@ namespace HealthClinic_API.Controllers
 
                     return StatusCode(201);
                 }
-                return Ok("Medico não foi inserida corretamente");
+                return Ok("Medico não foi inserido corretamente");
             }
             catch (Exception erro)
             {
@@ -124,6 +124,26 @@ namespace HealthClinic_API.Controllers
             catch (Exception erro)
             {
                 return BadRequest(erro.Message);
+            }
+        }
+
+        // ********************** LISTAR POR ESPECIALIDADE
+        /// <summary>
+        /// Endpoint que aciona o método ListarPorEspecialidade
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> Retorna a lista de objetos </returns>
+        [HttpGet("Especialidade")]
+        public IActionResult ListarPorEspecialidade(Guid id)
+        {
+            try
+            {
+                List<Medico> lista = _medicoRepository.ListarPorEspecialidade(id);
+                return Ok(lista);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
         }
     }

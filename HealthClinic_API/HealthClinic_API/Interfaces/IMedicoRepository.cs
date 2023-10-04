@@ -15,5 +15,7 @@ namespace HealthClinic_API.Interfaces
 
         void Atualizar(Guid id, Medico medico);
 
+        List<Medico> ListarPorEspecialidade(Guid id);
+
     }
 }

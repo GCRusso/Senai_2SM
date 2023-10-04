@@ -101,5 +101,26 @@ namespace HealthClinic_API.Repositories
         {
             return _healthContext.Medico.ToList();
         }
+
+        //**************************** LISTAR POR ESPECIALIDADE
+        /// <summary>
+        /// Método que lista os medicos por especialidade
+        /// </summary>
+        /// <param name="id"> id especialidade </param>
+        /// <returns> lista de consultas por especialidade </returns>
+        public List<Medico> ListarPorEspecialidade(Guid id)
+        {
+            List<Medico> lista = new List<Medico>();
+
+            foreach (var medico in _healthContext.Medico)
+            {
+                if (medico.IdEspecialidade == id)
+                {
+                    lista.Add(medico);
+                }
+            }
+
+            return _healthContext.Medico.Where(z => z.IdEspecialidade!= id).ToList();
+        }
     }
 }
