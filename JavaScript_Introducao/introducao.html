@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <body onload="alert('Página carregada com suuuuuucesso!')"> -->
+<body>
+    <h1>Introdução ao JavaScript</h1>
+
+    <input type="text" placeholder="Digite seu nome" id="nome">
+
+    <button onclick="alert('Bom dia, Pe-Pe-Pessoal!')">Bom Dia</button>
+
+    <button onclick="Saudacao()">Saudação</button>
+
+    <script>
+        function Saudacao() 
+        {
+            var nome = window.document.getElementById("nome").value;
+            //alert('Bom dia :) ' + nome);
+            //Ou pode utilizar a interpolação, utilizado com crases
+            alert(`Bom Dia! ${nome} !`)
+        
+
+            //alert("Bom Dia! " + nome.value)
+            //Imprime no console e salva as informações, ambos puxa a mesma informação
+            //console.log(nome.placeholder)
+            //console.log(nome.value)
+        }
+    </script>
+</body>
+</html>
