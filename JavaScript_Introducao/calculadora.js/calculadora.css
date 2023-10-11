@@ -1,0 +1,16 @@
+.background
+{
+    background-color: blue;
+    width: 500px;
+    height: 400px;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 25px;
+}
+
+h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let frutas = ['Banana', 'Maça', 'Morango'];
+        
+        console.log(frutas);
+        console.log(`Quantidade de frutas: ${frutas.length}`);
+
+        // para inserir novos itens no array e ele ira para ultima posição
+        frutas.push(`uva`)
+        frutas.push(`mamão`)
+        frutas.push(`amora`)
+
+        //Organiza em ordem alfabética,númerica ou de caracteres
+        frutas.sort()
+
+        console.log(`Quantidade de frutas: ${frutas.length}`)
+
+        
+
+        console.log(frutas[0]);
+        console.log(frutas[2]);
+        console.log(frutas[5]);
+        console.log(frutas[6]); // undefined
+        
+
+        console.log(`-------------------------------------`);
+
+        //Looping utilizando FOR
+         for (let index = 0; index < frutas.length; index++) {
+             console.log(`Utilizando FOR  Fruta${index + 1} ${frutas[index]}`);
+         }
+    
+         console.log(`-----------------------------------`);
+
+         //looping utilizando forEach
+        frutas.forEach(function (fruta, i){
+            
+            console.log(`Utilizando Foreach Fruta ${i+1} ${fruta}`);
+        })
+
+        let prateleira = [
+            "Cerveja",
+            "Cola-Cola",
+            "Agua",
+            "Gatorade",
+            "Corote",
+            "H20",
+            "Guarana Antartica",
+            "Tubaina",
+        ];
+
+        //SWITCH CASE 
+        let bebida = prateleira[7]
+
+        switch (bebida) {
+
+            case "Cerveja":
+                console.log("Achei sua Cerveja!!")
+                break;
+                
+            case "Cola-Cola":
+                console.log("Achei sua Coca-Cola!!")
+                break;
+
+            case "Agua":
+                console.log("Achei sua Agua!!")
+                break;
+
+            case "Gatorade":
+                console.log("Achei seu Gatorade!!")
+                break;
+
+            case "Corote":
+                console.log("Achei seu Corote!!")
+                break;
+
+            case "H20":
+                console.log("Achei sua H20!!")
+                break;
+
+            case "Guarana Antartica":
+                console.log("Achei seu Guarana Antartica!!")
+                break;
+
+            case "Tubaina":
+            console.log("Achei sua Tubaina!!")
+            break;   
+
+        
+            default:
+                console.log(`Não temos (${bebida})`)
+                break;
+        }
+
+    </script>
+</body>
+</html>

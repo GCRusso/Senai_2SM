@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Criar um formulario para receber o nome do usuário -->
+    <!-- e substituir pelo um nickname -->
+    <!-- ao clicar no botão o nickname deve ser exibido na tela -->
+
+    <h1>Nickname</h1>
+
+    <form>
+        <label for="nome">Informe seu nome</label>
+        <input type="text" id="nome" placeholder="Nome">
+        <button type="submit" onclick="Nome()">Cadastrar</button>
+
+        <br><br>
+        <label for="nick">Informe seu nick</label>
+        <input type="text" id="nick" placeholder="Nickname">
+        <button type="submit" onclick="Nick()">Cadastrar  Nick</button>
+        <br><br>
+
+        <button type="submit" onclick="Alterar()"> Meu Nickname</button>
+
+        <p id="exibir"></p>
+        <p id="exibirnick"></p>
+        <p id="troca"></p>
+        
+    </form>
+
+    <script>
+
+        function Nome()
+        {
+        event.preventDefault();
+        let nome = document.getElementById("nome").value
+        document.getElementById('exibir').innerText = nome
+        }
+
+        function Nick()
+        {
+            event.preventDefault();
+            let nick = document.getElementById("nick").value
+
+            document.getElementById('exibirnick').innerText = nick
+        }
+
+        function Alterar()
+        {
+            event.preventDefault();
+            nome.replace(Nome, Nick )
+
+            document.getElementById('troca').innerText = troca
+        }
+           
+
+    </script>
+</body>
+</html>
