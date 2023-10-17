@@ -7,8 +7,7 @@ function calcular(e) {
     const nome = document.getElementById("nome").value.trim(); // trim = retira os espaços que o usuário pode deixar
     const altura = Number.parseFloat(document.getElementById("altura").value);
     const peso = Number.parseFloat(document.getElementById("peso").value);
-
-
+    
     if (isNaN(altura) || isNaN(peso) || nome.length == 0) {
         alert("É necessário preencher os campos corretamente!")
         return; //Para a função e entrega o resultado
@@ -25,11 +24,23 @@ function calcular(e) {
         altura: altura,
         peso: peso,
         imc: imc,
-        situacao: situacao
+        situacao: situacao,
+        dataCadastro : dataCadastro
     }
 
     //Adicionando um objeto pessoa dentro do array que está no escopo GLOBAL
     arrPessoas.push(pessoa);
+
+    //Retorna um objeto DATE
+    const data = new Date();
+    //Retorna a data de 1 a 31
+    const dia = data.getDate() < 10 ? `0${data.getDate()}` : data.getDate();
+    //Retorna de 0 a 11
+    const mes = data.getMonth() + 1;
+    //retorna o ano com 4 digitos yyyy
+    const ano = data.getFullYear();
+
+    const dataCadastro = dia + mes + ano; // FALTA TERMINAR **********************************************************************************************
 
     /*const pessoa = {nome, altura, peso, imc, situacao : txtSituacao}; 
     Esta forma é conhecida como escrita curta, quando o nome do parametro é igual ao nome da variável você pode encurtar desta forma
@@ -110,7 +121,5 @@ function listarNomes() {
     arrPessoas.forEach(pessoa1 => {
         console.log(pessoa1.nome)
     });
-
-
 
 }
