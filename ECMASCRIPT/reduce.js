@@ -16,7 +16,19 @@ const produtos = [
     {produto: "Jaqueta de couro", preco: 700.01},
 ];
 
+
 let totalProduto = produtos.reduce((valorInicial, oP) => {
     return valorInicial + oP.preco;
 }, 0)
+
 console.log(`Gerente, o total de vendas é: R$${totalProduto}`);
+
+
+//Comissao do vendedor de 5%
+const vendedor = "Gabriel";
+
+let comissao = produtos.reduce((valorInicial, oP) => {
+    return valorInicial + (oP.preco * 0.05);
+}, 0);
+
+console.log(`${vendedor} sua comissao é de ${comissao}`)

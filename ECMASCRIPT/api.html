@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+/*
+        //THEN = Quando acontecer
+        //CATCH = Caso nao aconteça
+        const retorno = fetch('https://viacep.com.br/ws/09271090/json/')
+
+        //GET
+        .then((resp) => { //Promise resolvida
+            console.log(resp); //Objeto cheio de coisas(Todos os valores) traz todo o body
+            return resp.json(); //Retorna os dados
+        })
+        .then((dados) => { //Os dados do corpo da promise o objeto
+            console.log(dados);
+        })
+        .catch((e)=>{
+            console.log("Deu Ruim!!!");
+        })
+        console.log(retorno)
+        */
+
+        //------------------------------------------------------------------------------
+
+         const url = "https://viacep.com.br/ws/09271090/json/"
+
+         //GET
+         fetch(url)
+         .then( (resposta) => {
+            //Objeto promise resolvido (Headers, Body, Others)
+            return resposta.json();
+         })
+         .then( (dados) => { //Dados traz tudo que obteve no return resposta.json linha 39
+            //Objeto promise resolvido (Headers, Body, Others)
+            
+            console.log(`
+            Endereço: ${dados.logradouro}
+            Cidade: ${dados.localidade}
+            Estado: ${dados.uf}
+            `)
+         })
+         .catch( (e) => {
+            console.log(`Deu Ruim: ${e.TypeError}`);
+            console.log(e);
+         })
+
+
+    </script>
+</body>
+
+</html>
