@@ -1,0 +1,47 @@
+{
+  "TipoEvento": [
+    {
+      "id": 1,
+      "tituloEvento": "Natal",
+      "autorEvento": "Gabriel",
+      "dataEvento": "25/12/2023"
+    },
+    {
+      "tituloEvento": "Ano novo",
+      "autorEvento": "Pedro",
+      "dataEvento": "31/01/2023",
+      "id": 2
+    }
+  ],
+  "posts": [
+    {
+      "title": "Aprendendo a utilizar Json Server",
+      "author": "Gabriel Russo",
+      "id": 2
+    },
+    {
+      "title": "Aprendendo JSOOOOON",
+      "author": "Rubens",
+      "id": 3
+    },
+    {
+      "title": "Festa da Xuxa 2.0",
+      "author": "Marchetti",
+      "id": 4
+    }
+  ],
+  "comments": [
+    [
+      "top"
+    ],
+    [
+      "abracadabra"
+    ],
+    [
+      "Estou querendo muito ir á festa da XUXA!!"
+    ]
+  ],
+  "profile": {
+    "name": "Gabriel Russo"
+  }
+}

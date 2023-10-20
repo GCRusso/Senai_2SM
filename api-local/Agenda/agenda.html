@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit= "cadastrar(event)">
+
+    <label for="cep">CEP</label>
+    <input type="number" autocomplete="off" onblur="buscarEndereco(this.value)" 
+    placeholder="Insira seu CEP" id="cep">
+    <span id="not-found"></span>
+    <br><br>
+        
+    <label for="endereco">Rua</label>
+    <input type="text" placeholder="Insira sua rua" id="endereco">
+    <br><br>
+
+    <label for="cidade">Cidade</label>
+    <input type="text" placeholder="Insira sua cidade" id="cidade">
+    <br><br>
+
+    <label for="bairro">Bairro</label>
+    <input type="text" placeholder="Insira seu bairro" id="bairro">
+    <br><br>
+
+    <label for="estado">Estado</label>
+    <input type="text" placeholder="Insira seu estado" id="estado">
+    <br><br>
+
+    <button>Cadastrar</button>
+</form>
+
+<script src="funcoes.js"></script>
+</body>
+</html>
