@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>*** Lista de Frutas ***</h1>
+
+    <form onsubmit="cadastrarFrutas(event)">
+
+    <label for="fruta">Adicione a fruta</label>
+    <input type="text" id="fruta" placeholder="Adicione sua fruta">
+    <br></br>
+
+    <button type="submit">Cadastrar</button>
+    <br></br>
+    <div id="lista-frutas"></div>
+    </form>
+
+    
+    <script>
+        const arrFruta = [];
+
+        function cadastrarFrutas(e){
+            e.preventDefault();
+            
+            const fruta = document.getElementById("fruta").value.trim().toLowerCase();
+
+
+            arrFruta.push(fruta);
+            arrFruta.sort();
+            let template = "<ul>"
+            console.log(arrFruta)
+
+            arrFruta.forEach(fruta1 => {
+                template += `<li>${fruta1}</li>`;
+            });
+
+            template += "<ul>";
+
+            document.getElementById("lista-frutas").innerHTML = template;
+        };
+        
+    </script>
+    
+</body>
+</html>
