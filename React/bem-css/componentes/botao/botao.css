@@ -1,0 +1,42 @@
+.button{
+    display: block;
+    width: 300px ;
+    min-width: 150px;
+    height: 40px;
+    background-color: grey;
+    color: black;
+    border-radius: 8px;
+    text-align: center;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    outline: none;
+    cursor: pointer;
+
+}
+/* Modificador da classe button, se utiliza desta forma exemplos a baixo */
+.button:hover{
+    opacity: .8;
+    color: greenyellow;
+}
+
+.button--success-state{
+    background-color: green;
+    color: white;
+}
+
+.button--warning-state{
+    background-color: orange;
+    color: black;
+}   
+
+.button--danger{
+    background-color: red;
+    color: white;
+}
+
+.button--big{
+    width: 100%;
+    height: 25%;
+    font-size: 125px;
+}
