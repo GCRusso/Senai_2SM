@@ -1,20 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Container from '../Container/Container';
+import './Header.css'
+import Nav from '../Nav/Nav';
+import PerfilUsuario from '../PerfilUsuario/PerfilUsuario';
+//Importando a imagem do menu bar
+import menubar from '../../assets/images/menubar.png';
+
 
 const Header = () => {
-    return(
-        <header>
-            <nav>
-                <Link to="/">Home</Link>
-                <br /><br />
-                <Link to="/tipoeventos">Tipo Eventos</Link>
-                <br /><br />
-                <Link to="/eventos">Eventos</Link>
-                <br /><br />
-                <Link to="/login">Login</Link>
-                <br /><br />
-                <Link to="/testes">Teste</Link>
-            </nav>
+    return (
+        <header className='headerpage'>
+            <Container>
+                <div className='header-flex'>
+                    <img src={menubar} alt="Menu sanduiche, Serve para exibir ou esconder o menu no smartphone" />
+
+                    <Nav />
+                    <PerfilUsuario />
+                </div>
+            </Container>
         </header>
     );
 };
