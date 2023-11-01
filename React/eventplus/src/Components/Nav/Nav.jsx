@@ -1,8 +1,8 @@
 import React from 'react';
 import './Nav.css'
 //importando imagem do logotipo
-import logMobile from '../../assets/images/logo-white.svg';
-import logDesktop from '../../assets/images/logo-pink.svg';
+import logoMobile from '../../assets/images/logo-white.svg';
+import logoDesktop from '../../assets/images/logo-pink.svg';
 
 const Nav = () => {
     return (
@@ -10,7 +10,11 @@ const Nav = () => {
             <span className='navbar__close'>X</span>
 
             <a href="" className='eventlogo'>
-                <img className='eventlogo__logo-image' src={logoMobile} alt="Logotipo do smartphone" />
+                <img 
+                className='eventlogo__logo-image' 
+                src={windows.innerWidth >= 992 ? logoDesktop : logoMobile } 
+                alt="Event Plus Logo" 
+                />
             </a>
 
             <div className="navbar__items-box">
