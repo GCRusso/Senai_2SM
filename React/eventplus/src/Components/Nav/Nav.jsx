@@ -4,6 +4,7 @@ import './Nav.css'
 import logoMobile from '../../assets/images/logo-white.svg';
 import logoDesktop from '../../assets/images/logo-pink.svg';
 
+import { Link } from 'react-router-dom';
 const Nav = () => {
     return (
         <nav className='navbar'>
@@ -12,15 +13,18 @@ const Nav = () => {
             <a href="" className='eventlogo'>
                 <img 
                 className='eventlogo__logo-image' 
-                src={windows.innerWidth >= 992 ? logoDesktop : logoMobile } 
+                src={window.innerWidth >= 992 ? logoDesktop : logoMobile } 
                 alt="Event Plus Logo" 
                 />
             </a>
 
             <div className="navbar__items-box">
-                <a href="">Home</a>
-                <a href="">Tipos de Evento</a>
-                <a href="">Usuários</a>
+                <Link to="/">Home</Link> 
+                <Link to="/tipo-eventos">Tipos de Evento</Link>
+                <Link to="">Usuários</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/eventos">Eventos</Link>
+                <Link to="/testes">Testes</Link>
             </div>
         </nav>
     );

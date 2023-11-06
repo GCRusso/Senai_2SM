@@ -13,6 +13,9 @@ body {
   font-family: 'Poppins-Regular','Courier New', Courier, monospace;
 }
 
+/* Para utilizacao destas cores abaixo .
+  color: var(--color-medium-red);
+*/
 :root {
   /* Variáveis de tema */
   
@@ -27,6 +30,8 @@ body {
   /* desktop */
 
 }
+
+
 /* main {
   border: 1px solid green;
   margin-top: 55px;
