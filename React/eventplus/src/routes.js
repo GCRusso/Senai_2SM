@@ -8,21 +8,25 @@ import TipoEventos from "./pages/TipoEventos/TipoEventos";
 import TestePage from "./pages/TestePage/TestePage";
 import EventosPage from "./pages/EventosPage/EventosPage"
 
-
-
 const Rotas = () => {
     return (
         <BrowserRouter>
-        <Header />
+
+            <Header />
+
             <Routes>
-                <Route element={ <HomePage />} path={"/"} exact />
-                <Route element={ <LoginPage />} path={"/login"} exact />
-                <Route element={ <TipoEventos />} path={"/tipo-eventos"} exact />
-                <Route element={ <TestePage />} path={"/testes"} exact />
-                <Route element={ <EventosPage />} path={"/eventos"} exact />
-                
+                <Route element={<HomePage />} path={"/"} exact />
+                <Route element={<TipoEventos />} path={"/tipo-eventos"} exact />
+                <Route element={<EventosPage />} path={"/eventos"} exact />
+                <Route element={<LoginPage />} path={"/login"} exact />
             </Routes>
-            <Footer />
+
+            {/* Caso passe um texto aqui ele assume este texto, caso nao passe ele assume o texto que ja contem na textRights lá no footer.jsx 
+
+            <Footer textRights="Todos os direitos reservados." />
+            */}
+            
+            <Footer/>   
         </BrowserRouter>
     );
 };
