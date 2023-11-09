@@ -8,9 +8,9 @@ const VisionSection = () => {
             <div className='vision__box'>
 
                 <Title
-                titleText={"Vision"}
+                titleText="Visão"
                 color='white'
-                additionalClass='vision__title'
+                className='vision__title'
                 />
                 <p className='vision__text' >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure modi magni repudiandae ad sit doloribus, impedit facilis facere quas quod inventore enim consequuntur sed maxime obcaecati architecto, eaque minima error.</p>
             </div>
