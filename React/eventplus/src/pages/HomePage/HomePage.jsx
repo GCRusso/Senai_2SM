@@ -7,19 +7,18 @@ import MainContent from "../../Components/MainContent/MainContent"
 import NextEvent from "../../Components/NextEvent/NextEvent";
 import Container from "../../Components/Container/Container"
 import ContactSection from "../../Components/ContactSection/ContactSection";
-import axios from "axios"
-
+import api from '../../Services/Service';
+import { nextEventResource } from '../../Services/Service';
 
 const HomePage = () => {
 
     const [nextEvents, setNextEvents] = useState([]);
-    const urlLocal = 'https://localhost:7118/api';
-
+    
     //Roda somente na inicialização do componente
     useEffect(()=>{
         async function getNextEvents(){
             try {
-                const promise = await axios.get(`${urlLocal}/Evento/ListarProximos`);
+                const promise = await api.get(`${nextEventResource}`);
                 const dados = await promise.data;
 
                 setNextEvents(dados); //atualiza o state
@@ -51,12 +50,13 @@ const HomePage = () => {
                         {
                             nextEvents.map((e) => {
                                 return(
+                                    //Necessario puxar os nomes das propriedades la no BD ou pelo swagger
                                     <NextEvent
-                                    key={e.id} //Para retirar o Warning, a key precisa de algo unico, como foi passado o ID
-                                    title={e.title}
-                                    description={e.description}
-                                    eventDate={e.eventDate}
-                                    idEvent={e.id}
+                                    key={e.idEvento} //Para retirar o Warning, a key precisa de algo unico, como foi passado o ID
+                                    title={e.nomeEvento}
+                                    description={e.descricao}
+                                    eventDate={e.dataEvento}
+                                    idEvent={e.idEvento}
                                 />
                                 )
 

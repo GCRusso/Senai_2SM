@@ -4,7 +4,7 @@ import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage"
 import LoginPage from "./pages/LoginPage/LoginPage";
-import TipoEventos from "./pages/TipoEventos/TipoEventos";
+import TiposEventosPage from "./pages/TiposEventosPage/TiposEventosPage";
 import TestePage from "./pages/TestePage/TestePage";
 import EventosPage from "./pages/EventosPage/EventosPage"
 import TestePageCopy from "./pages/TestePageCopy/TestePageCopy";
@@ -17,7 +17,7 @@ const Rotas = () => {
 
             <Routes>
                 <Route element={<HomePage />} path={"/"} exact />
-                <Route element={<TipoEventos />} path={"/tipo-eventos"} exact />
+                <Route element={<TiposEventosPage />} path={"/tipo-eventos"} exact />
                 <Route element={<EventosPage />} path={"/eventos"} exact />
                 <Route element={<LoginPage />} path={"/login"} exact />
                 <Route element={<TestePage />} path={"/testes"} exact />
