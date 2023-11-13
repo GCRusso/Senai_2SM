@@ -17,11 +17,11 @@ export const nextEventResource = '/Evento/ListarProximos'
 export const eventTypeResource = '/TiposEvento'
 
 const apiPort = '7118';
-const localApiUri = `https://localhost:${apiPort}/api`;
-const externalApiUri = null;
+const localApiUrl = `https://localhost:${apiPort}/api`;
+const externalApiUrl = null;
 
 const api = axios.create({
-    baseURL: localApiUri
+    baseURL: localApiUrl
 });
 
 export default api;
