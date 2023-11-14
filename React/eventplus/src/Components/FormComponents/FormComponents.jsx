@@ -15,10 +15,10 @@ export const Input = ({
     id,
     value,
     required,
-    additionalClass,
     name,
     placeholder,
-    manipulationFunction
+    manipulationFunction,
+    additionalClass = ""
 }) => {
     return (
         <input
@@ -51,7 +51,7 @@ export const Button = (props) => {
             name={props.name}
             textButton={props.textButton}
             type={props.type}
-            className={props.additionalClass}
+            className={`button-component ${props.additionalClass}`}
             onClick={props.manipulationFunction}
         >
             {props.textButton}
