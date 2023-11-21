@@ -31,7 +31,7 @@ const TableTp = ({ dados, fnDelete = null, fnUpdate = null }) => {
                                     alt="Imagem de uma caneta, para edição dos dados"
                                     idtipoevento={tp.idTipoEvento}
                                     onClick={(e) => {
-                                        fnUpdate('idtipoevento')
+                                        fnUpdate(tp.idTipoEvento)
                                     }}
                                 />
                             </td>

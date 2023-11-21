@@ -9,9 +9,10 @@ import Container from "../../Components/Container/Container"
 import ContactSection from "../../Components/ContactSection/ContactSection";
 import api from '../../Services/Service';
 import { nextEventResource } from '../../Services/Service';
+import Notification from '../../Components/Notification/Notification';
 
 const HomePage = () => {
-
+    const [notifyUser, setNotifyUser] = useState();
     const [nextEvents, setNextEvents] = useState([]);
     
     //Roda somente na inicialização do componente
@@ -23,7 +24,13 @@ const HomePage = () => {
 
                 setNextEvents(dados); //atualiza o state
             } catch (error) {
-                alert ("Deu ruim na api!")
+                setNotifyUser({
+                    titleNote:"Erro",
+                    textNote:"Nao foi possível carregar os próximos eventos.",
+                    imgIcon:"danger",
+                    imgAlt: "Imagem uma mulher com um ponto de exclamação na frente.",
+                    showMessage: true,
+                   });
             }
         }
 
@@ -42,6 +49,7 @@ const HomePage = () => {
 
     return (
         <MainContent>
+            {<Notification{...notifyUser} setNotifyUser={setNotifyUser} />}
             <Banner />
             <section className="proximos-eventos">
                 <Container>
