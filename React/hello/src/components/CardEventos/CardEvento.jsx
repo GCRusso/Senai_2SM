@@ -28,7 +28,6 @@ const CardEvento = ( {titulo, descricao, link} ) => {
             <a href="" className="box-card__link">{link}</a>
         </div> 
     );
-
 };
 
 // Exporta o componente CardEvento para que ele possa ser usado em outros lugares do aplicativo

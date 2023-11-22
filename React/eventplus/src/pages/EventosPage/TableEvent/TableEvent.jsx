@@ -1,19 +1,65 @@
 import React from 'react';
 import './TableEvent.css';
-
-const Table = () => {
+import editPen from '../../../assets/images/edit-pen.svg';
+import trashDelete from '../../../assets/images/trash-delete.svg';
+import { dateFormatDbToView } from '../../Utils/stringFunctions';
+const Table = ({ dados, fnDelete = null, fnUpdate = null }) => {
     return (
-        <table>
-            <thead>
-            <tr className="table-data__head-row">
+        <table className='table-data'>
+            <thead className="table-data__head">
+                <tr className="table-data__head-row">
                     <th className="table-data__head-title table-data__head-title--big">Nome</th>
-                    <th className="table-data__head-title table-data__head-title--little">Tipo Evento</th>
+                    <th className="table-data__head-title table-data__head-title--big">Descrição</th>
+                    <th className="table-data__head-title table-data__head-title--big">Tipo Evento</th>
+                    <th className="table-data__head-title table-data__head-title--big">Data</th>
                     <th className="table-data__head-title table-data__head-title--little">Editar</th>
                     <th className="table-data__head-title table-data__head-title--little">Deletar</th>
                 </tr>
             </thead>
 
+            {/* CORPO  */}
             <tbody>
+                {dados.map((evt) => {
+                    return (
+                        <tr key={evt.idEvento} className="table-data__head-row">
+                            <td className="table-data__data table-data__data--big">
+                                {evt.nomeEvento}
+                            </td>
+                            <td className="table-data__data table-data__data--big">
+                                {evt.descricao}
+                            </td>
+                            <td className="table-data__data table-data__data--big">
+                                {evt.tiposEvento.titulo}
+                            </td>
+                            <td className="table-data__data table-data__data--big">
+                                {dateFormatDbToView(evt.dataEvento)}
+                            </td>
+
+                            <td className="table-data__data table-data__data--little">
+                                <img
+                                    className="table-data__icon"
+                                    src={editPen}
+                                    alt="Imagem de uma caneta, para edição dos dados"
+                                    idtipoevento={evt.idEvento}
+                                    onClick={(e) => {
+                                        fnUpdate(evt.idEvento)
+                                    }}
+                                />
+                            </td>
+
+                            <td className="table-data__data table-data__data--little">
+                                <img
+                                    className="table-data__icon"
+                                    src={trashDelete}
+                                    alt="Imagem de uma lixeira, para exclusao dos dados"
+                                    onClick={() => {
+                                        fnDelete((evt.idEvento))
+                                    }}
+                                />
+                            </td>
+                        </tr>
+                    )
+                })}
 
             </tbody>
         </table>

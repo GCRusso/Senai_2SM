@@ -63,7 +63,7 @@ const TiposEventosPage = () => {
         }
     }
 
-    //******************************************* CADASTRO DE DADOS *******************************************/
+    //******************************************* CADASTRO DE DADOS *******************************************
 
     async function handleSubmit(e) {
         setShowSpinner(true);
@@ -270,7 +270,6 @@ const TiposEventosPage = () => {
                         </div>
                     </Container>
                 </section>
-
 
                 {/* Listagem do tipo do eventos*/}
                 <section className="lista-eventos-section">
