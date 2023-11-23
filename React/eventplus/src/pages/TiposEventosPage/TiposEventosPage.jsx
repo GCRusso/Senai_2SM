@@ -88,6 +88,7 @@ const TiposEventosPage = () => {
             notify('Cadastrado com sucesso!');
             const buscaEventos = await api.get(eventTypeResource);
             setTipoEventos(buscaEventos.data);//Atualiza a variavel
+            
         } catch (error) {
             setNotifyUser({
                 titleNote:"Error",
