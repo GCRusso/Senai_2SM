@@ -154,6 +154,8 @@ const EventosPage = () => {
 
         setShowSpinner(false);
     }
+
+
     //******************************************* MOSTRAR FORMULARIO DE EDICAO *******************************************
 
     async function showUpdateForm(idElement) {
@@ -161,7 +163,7 @@ const EventosPage = () => {
         setFrmEdit(true)
         try {
             const promise = await api.get(`${eventsResource}/${idElement}`, { idElement })
-            setDataEvento(promise.data.dataEvento)
+            setDataEvento(promise.data.dataEvento.slice(0, 10))
             setNomeEvento(promise.data.nomeEvento)
             setDescricao(promise.data.descricao)
             setIdTipoEvento(promise.data.idTipoEvento)
@@ -172,9 +174,45 @@ const EventosPage = () => {
         setShowSpinner(false);
     }
 
+
+    // *********************** Cancela a ação de edição (volta para o from cadastro) / EdiActionAbort *****************************
+    function editActionAbort() {
+        setShowSpinner(true);
+        setFrmEdit(false);
+        setNomeEvento(""); // esvazia o campo apos ser cadastrado
+        setDescricao(""); // esvazia o campo apos ser cadastrado
+        setDataEvento("");
+        setIdTipoEvento(null);
+        setShowSpinner(false);
+    }
+
+
     //******************************************* ATUALIZAR CADASTRO *******************************************
-    function handleUpdate() {
-        return
+    async function handleUpdate(e) {
+        setShowSpinner(true);
+        e.preventDefault();
+        try {
+            const retorno = await api.put(eventsResource + "/" + idEvento, { 
+                nomeEvento: nomeEvento,
+                descricao: descricao,
+                idTipoEvento: idTipoEvento,
+                dataEvento: dataEvento,
+                idInstituicao: idInstituicao,
+            });
+
+            if (retorno.status === 204) {
+                const buscaEventos = await api.get(eventsResource);
+                setEventos(buscaEventos.data);
+                setFrmEdit(false);
+                setNomeEvento("");
+                setDescricao(""); 
+                setDataEvento("");
+            }
+        } catch (error) {
+            alert(error);
+        }
+        setShowSpinner(false);
+
     }
 
 
@@ -329,7 +367,7 @@ const EventosPage = () => {
                                                     name="cancelar"
                                                     //formulário só será chamado pois seu type é submit
                                                     type="submit"
-                                                    //manipulationFunction={editActionAbort}
+                                                    manipulationFunction={editActionAbort}
                                                     addtionalClass="button-component--middle"
                                                 />
                                             </div>
