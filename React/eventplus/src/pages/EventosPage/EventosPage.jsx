@@ -122,6 +122,18 @@ const EventosPage = () => {
         setShowSpinner(true);
         e.preventDefault(); //Evita o submit do formulário vazio
 
+        if (nomeEvento.trim().length < 3 || descricao.trim().length < 3) {
+            setNotifyUser({
+             titleNote:"Aviso",
+             textNote:"O Nome do evento ou a descrição deve possuir pelomenos 3 caracteres.",
+             imgIcon:"warning",
+             imgAlt: "Imagem uma mulher com um ponto de exclamação na frente.",
+             showMessage: true,
+            });
+            setShowSpinner(false);
+             return
+         }
+
         try {
             const retorno = await api.post(eventsResource, {
                 nomeEvento: nomeEvento,
@@ -168,6 +180,7 @@ const EventosPage = () => {
             setDescricao(promise.data.descricao)
             setIdTipoEvento(promise.data.idTipoEvento)
 
+            setIdEvento(promise.data.idEvento)
         } catch (error) {
             alert('erro')
         }
@@ -191,8 +204,22 @@ const EventosPage = () => {
     async function handleUpdate(e) {
         setShowSpinner(true);
         e.preventDefault();
+
+        if (nomeEvento.trim().length < 3 || descricao.trim().length < 3) {
+            setNotifyUser({
+             titleNote:"Aviso",
+             textNote:"O Nome do evento ou a descrição deve possuir pelomenos 3 caracteres.",
+             imgIcon:"warning",
+             imgAlt: "Imagem uma mulher com um ponto de exclamação na frente.",
+             showMessage: true,
+            });
+
+            setShowSpinner(false);
+             return
+         }
+
         try {
-            const retorno = await api.put(eventsResource + "/" + idEvento, { 
+            const retorno = await api.put(`${eventsResource}/${idEvento}`, { 
                 nomeEvento: nomeEvento,
                 descricao: descricao,
                 idTipoEvento: idTipoEvento,
@@ -217,7 +244,7 @@ const EventosPage = () => {
 
 
     //Funcao titulo tipo ***************************************
-    function tituloTipo(tipoEventos) {
+    function dePara(tipoEventos) {
         let arrayOptions = []
 
         tipoEventos.forEach(element => {
@@ -275,7 +302,7 @@ const EventosPage = () => {
                                                     id='TiposEvento'
                                                     name={'tiposEvento'}
                                                     required={'required'}
-                                                    options={tituloTipo(tiposEventos)}
+                                                    options={dePara(tiposEventos)}
                                                     value={idTipoEvento}
                                                     manipulationFunction={(e) => {
                                                         setIdTipoEvento(e.target.value)
@@ -298,7 +325,6 @@ const EventosPage = () => {
                                                     textButton="Cadastrar"
                                                     id="cadastrar"
                                                     name="cadastrar"
-                                                    //formulário só será chamado pois seu type é submit
                                                     type="submit"
                                                 />
                                             </>
@@ -332,7 +358,7 @@ const EventosPage = () => {
                                                 id='TiposEventos'
                                                 name={'tiposEvento'}
                                                 required={'required'}
-                                                options={tituloTipo(tiposEventos)}
+                                                options={dePara(tiposEventos)}
                                                 value={idTipoEvento}
                                                 manipulationFunction={(e) => {
                                                     setIdTipoEvento(e.target.value)

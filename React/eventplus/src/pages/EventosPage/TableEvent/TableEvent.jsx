@@ -3,6 +3,7 @@ import './TableEvent.css';
 import editPen from '../../../assets/images/edit-pen.svg';
 import trashDelete from '../../../assets/images/trash-delete.svg';
 import { dateFormatDbToView } from '../../Utils/stringFunctions';
+import { Tooltip } from 'react-tooltip';
 const Table = ({ dados, fnDelete = null, fnUpdate = null }) => {
     return (
         <table className='table-data'>
@@ -25,8 +26,15 @@ const Table = ({ dados, fnDelete = null, fnUpdate = null }) => {
                             <td className="table-data__data table-data__data--big">
                                 {evt.nomeEvento}
                             </td>
-                            <td className="table-data__data table-data__data--big">
+                            <td className="table-data__data table-data__data--big"
+                                data-tooltip-id={evt.idEvento}
+                                data-tooltip-content={evt.descricao}
+                                data-tooltip-place="bottom"
+                            >
                                 {evt.descricao}
+
+                                <Tooltip id={evt.idEvento} className='custom-tootip' />
+                                {evt.descricao.substr(0, 15)}...
                             </td>
                             <td className="table-data__data table-data__data--big">
                                 {evt.tiposEvento.titulo}
