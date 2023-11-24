@@ -277,7 +277,7 @@ const EventosPage = () => {
                                                 <Input
                                                     id='Nome'
                                                     type={'text'}
-                                                    placeholdder={'Nome'}
+                                                    placeholder={'Nome'}
                                                     name={'nome'}
                                                     required={'required'}
                                                     value={nomeEvento}
@@ -289,7 +289,7 @@ const EventosPage = () => {
                                                 <Input
                                                     id='Descricao'
                                                     type={'text'}
-                                                    placeholdder={'Descrição'}
+                                                    placeholder={'Descrição'}
                                                     name={'descricao'}
                                                     required={'required'}
                                                     value={descricao}
@@ -312,7 +312,7 @@ const EventosPage = () => {
                                                 <Input
                                                     id='dataEvento'
                                                     type={'date'}
-                                                    placeholdder={'dd/mm/aaaa'}
+                                                    placeholder={'dd/mm/aaaa'}
                                                     name={'Data'}
                                                     required={'required'}
                                                     value={dataEvento}
@@ -333,7 +333,7 @@ const EventosPage = () => {
                                             <Input
                                                 id='Nome'
                                                 type={'text'}
-                                                placeholdder={'Nome'}
+                                                placeholder={'Nome'}
                                                 name={'nome'}
                                                 required={'required'}
                                                 value={nomeEvento}
@@ -345,7 +345,7 @@ const EventosPage = () => {
                                             <Input
                                                 id='Descricao'
                                                 type={'text'}
-                                                placeholdder={'Descrição'}
+                                                placeholder={'Descrição'}
                                                 name={'descricao'}
                                                 required={'required'}
                                                 value={descricao}
@@ -368,7 +368,7 @@ const EventosPage = () => {
                                             <Input
                                                 id='dataEvento'
                                                 type={'date'}
-                                                placeholdder={'dd/mm/aaaa'}
+                                                placeholder={'dd/mm/aaaa'}
                                                 name={'Data'}
                                                 required={'required'}
                                                 value={dataEvento}
