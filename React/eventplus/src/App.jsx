@@ -1,18 +1,18 @@
 import './App.css';
 // import Titulo from './Components/Titulo/Titulo';
 import Rotas from './routes';
+import { UserContext } from './context/AuthContext';
+import { useState } from 'react';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <Rotas />
-//       <container>
-//           <Titulo titulo = "Titulo da pagina" />
-//       </container>
-//     </div>
-//   );
-// }
+const App = () => {
+    const [userData, setUserData] = useState({})
+    return (
+        <UserContext.Provider value={{ userData, setUserData }}>
+            <Rotas />
+        </UserContext.Provider>
 
-const App = () => <Rotas />
+
+    );
+};
 
 export default App;
