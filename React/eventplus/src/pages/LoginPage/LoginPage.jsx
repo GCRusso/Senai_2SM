@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import ImageIllustrator from "../../Components/ImageIlustrator/ImageIlustrator";
 import logo from "../../assets/images/logo-pink.svg";
 import { Input, Button } from "../../Components/FormComponents/FormComponents";
 import api, { loginResource } from '../../Services/Service'
 import { UserContext, userDecodeToken } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 import "./LoginPage.css";
 
@@ -12,7 +13,13 @@ const LoginPage = () => {
 
     //Importa os dados globais do usuario
     const { userData, setUserData } = useContext(UserContext);
+    const navigate = useNavigate();
 
+    // useEffect(() => {
+    //     if(userData.nome){
+    //         navigate("/");
+    //     }
+    // }, [userData]); 
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -29,8 +36,13 @@ const LoginPage = () => {
 
                 //Guarda o token globalmente
                 setUserData(userFullToken);
-            
+
                 localStorage.setItem("token", JSON.stringify(userFullToken));
+
+
+                navigate("/");// envia o usuario para home
+
+
 
             } catch (error) {
                 //Erro da API: bad request(401) ou erro de conexão
