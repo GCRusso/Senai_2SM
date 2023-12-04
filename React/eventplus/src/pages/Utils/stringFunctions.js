@@ -13,9 +13,5 @@ export const dateFormatDbToView = data => {
 
 //DEFAULT so pode ser usado 1 por modulo, EXPORT ilimitado
 export default function xpto(x){
-
-
-
-
     return x + 1;
 }
