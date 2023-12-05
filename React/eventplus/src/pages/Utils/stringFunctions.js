@@ -4,10 +4,6 @@ export const dateFormatDbToView = data => {
     data = data.substr(0 ,10); // retorna apenas a data (2023-11-15)
     data = data.split("-"); // [2023, 09, 30] transformamos a data em um array
 
-
-
-
-
     return `${data[2]}/${data[1]}/${data[0]}`; //retornamos o array data na sequencia que queremos
 }
 

@@ -7,7 +7,7 @@ import Container from "../../Components/Container/Container";
 import { Select } from "../../Components/FormComponents/FormComponents";
 import Spinner from "../../Components/Spinner/Spinner";
 import Modal from "../../Components/Modal/Modal";
-import api from "../../Services/Service";
+import api, { eventsResource, myEventsResource } from "../../Services/Service";
 
 
 import "./EventosAlunoPage.css";
@@ -16,47 +16,80 @@ import { UserContext } from "../../context/AuthContext"
 const EventosAlunoPage = () => {
     // state do menu mobile
     const [exibeNavbar, setExibeNavbar] = useState(false);
-    const [eventos, setEventos] = useState([
 
-        { idEvento: "1234", nomeEvento: "Evento de JavaScript", dataEvento: "20/12/2025" },
-        { idEvento: "1234", nomeEvento: "Evento de JavaScript", dataEvento: "20/12/2025" },
-        { idEvento: "1234", nomeEvento: "Evento de JavaScript", dataEvento: "20/12/2025" }
+    const [eventos, setEventos] = useState([]);
 
-    ]);
     // select mocado
     const [quaisEventos, setQuaisEventos] = useState([
         { value: 1, text: "Todos os eventos" },
         { value: 2, text: "Meus eventos" },
     ]);
 
-    const [tipoEvento, setTipoEvento] = useState(1); //código do tipo do Evento escolhido
+    const [tipoEvento, setTipoEvento] = useState("1"); //código do tipo do Evento escolhido
+
     const [showSpinner, setShowSpinner] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
     // recupera os dados globais do usuário
     const { userData, setUserData } = useContext(UserContext);
 
+
+    //*****Listar meus eventos e todos eventos******
     useEffect(() => {
+        async function loadEventsType() {
+            setShowSpinner(true);
+            // setEventos([]); //Zera o array de eventos
+
+            if (tipoEvento === "1") {//Chama todos os eventos
+
+                try {
+                    const retornoEventos = await api.get(eventsResource);
+                    setEventos(retornoEventos.data);
+                    console.log(retornoEventos.data);
+                } catch (error) {
+                    console.log("ERRO na API");
+                    console.log(error);
+                }
+            }
+            else if (tipoEvento === "2") {
+                try {
+                    const retornoEventos = await api.get(`${myEventsResource}/${userData.userId}`);
+
+                    console.log(retornoEventos.data);
+
+                    const arrEventos = [];//array vazio
+
+                    retornoEventos.data.forEach(e => {
+                        arrEventos.push(e.evento);
+                    });
+
+                    setEventos(arrEventos);
+
+                } catch (error) {
+                    console.log("ERRO NA API");
+                    console.log(error);
+                }
+            }
+            //Deixamos o select com o "selecione o tipo do evento" com array vazio, para quando ele estiver selecionado não mostrar nada 
+            else {
+                setEventos([]);
+            }
+            setShowSpinner(false);
+        }
         loadEventsType();
     }, [tipoEvento]);
 
-    async function loadEventsType() { 
-            
+
+    const verificaPresenca = (arrAllEvents, eventsUser) => {
+        for (let x = 0; x < arrAllEvents.length; x++) { //Para cada evento
+            for (let i = 0; i < eventsUser.length; i++) { //procurar a corre
+                if(arrAllEvents[x].idEvento === eventsUser[i].idEvento){
+                    arrAllEvents[x].situacao = true;
+                    break; //paro de procurar para o evento principal atual
+                }
+            }
+        }
     }
-
-    setShowSpinner(true);
-    if (tipoEvento == 1) {//Chama todos os eventos
-
-    }
-    else { }
-    setShowSpinner(false);
-
-
-
-
-
-
-
 
 
 
@@ -94,10 +127,11 @@ const EventosAlunoPage = () => {
                         name="tipo-evento"
                         required={true}
                         options={quaisEventos} // aqui o array dos tipos
-                        onChange={(e) => myEvents(e.target.value)} // aqui só a variável state
+                        manipulationFunction={(e) => myEvents(e.target.value)} // aqui só a variável state
                         defaultValue={tipoEvento}
-                        additionalClass="select-tp-evento"
+                        className="select-tp-evento"
                     />
+
                     <Table
                         dados={eventos}
                         fnConnect={handleConnect}

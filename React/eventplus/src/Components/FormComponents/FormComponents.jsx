@@ -79,9 +79,8 @@ export const Select = ({
             className={`input-component ${additionalClass}`}
             onChange={manipulationFunction}
             value={defaultValue}
-
         >
-            <option value="">Tipo Evento</option>
+            <option value="">Selecione o tipo do evento</option>
 
             {options.map((o) => {
                 return (
