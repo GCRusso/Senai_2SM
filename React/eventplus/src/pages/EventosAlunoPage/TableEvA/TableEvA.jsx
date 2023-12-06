@@ -2,7 +2,7 @@ import React from "react";
 import comentaryIcon from "../../../assets/images/comentary-icon.svg";
 import trashDelete from "../../../assets/images/trash-delete.svg";
 import { dateFormatDbToView } from "../../Utils/stringFunctions";
- import ToggleSwitch from "../../../Components/Toggle/Toggle";
+import ToggleSwitch from "../../../Components/Toggle/Toggle";
 // importa a biblioteca de tootips ()
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
@@ -68,7 +68,13 @@ const TableEvA = ({ dados, fnConnect = null, fnShowModal = null }) => {
                   onClick={fnShowModal}
                 />
 
-                <ToggleSwitch manipulationFunction={fnConnect} />
+                <ToggleSwitch toggleActive={e.situacao} manipulationFunction={() => {
+                fnConnect(
+                  e.idEvento, 
+                  e.situacao ? "unconnect" : "connect",
+                  e.situacao ? e.idPresencaEvento: null //Parâmetro opcional
+                  )
+                }} />
               </td>
             </tr>
           );
