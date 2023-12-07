@@ -72,7 +72,7 @@ const TableEvA = ({ dados, fnConnect = null, fnShowModal = null }) => {
                 fnConnect(
                   e.idEvento, 
                   e.situacao ? "unconnect" : "connect",
-                  e.situacao ? e.idPresencaEvento: null //Parâmetro opcional
+                  e.idPresencaEvento //Parâmetro opcional
                   )
                 }} />
               </td>
