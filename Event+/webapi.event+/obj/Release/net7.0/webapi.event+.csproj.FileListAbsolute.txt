@@ -259,3 +259,14 @@ C:\Users\23655858841\Desktop\Event+\webapi.event+\obj\Release\net7.0\webapi.even
 C:\Users\23655858841\Desktop\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.pdb
 C:\Users\23655858841\Desktop\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.genruntimeconfig.cache
 C:\Users\23655858841\Desktop\Event+\webapi.event+\obj\Release\net7.0\ref\webapi.event+.dll
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.csproj.AssemblyReference.cache
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.AssemblyInfoInputs.cache
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.AssemblyInfo.cs
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.csproj.CoreCompileInputs.cache
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.dll
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\refint\webapi.event+.dll
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.xml
+C:\Users\23655858841\Desktop\Senai_2SM\Event+\webapi.event+\obj\Release\net7.0\webapi.event+.pdb

@@ -30,8 +30,13 @@ const EventosAlunoPage = () => {
     const [showSpinner, setShowSpinner] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
+
+
     // recupera os dados globais do usuário
     const { userData, setUserData } = useContext(UserContext);
+    const [comentario, setComentario] = useState("");
+    const [idEvento, setIdEvento] = useState("");
+    const [idComentario, setIdComentario] = useState("");
 
 
     //*****Listar meus eventos e todos eventos******
@@ -121,43 +126,63 @@ const EventosAlunoPage = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     //********** LER UM COMENTÁRIO *********** */
-    async function loadMyComentary(idComentary) {
+    const loadMyComentary = async (idUsuario, idEvento) => {
         setShowSpinner(true);
         try {
-            const promise = await api.get(`${myComentaryResource}/${idComentary}`);
+            const promise = await api.get(`${myComentaryResource}?idUsuario=${idUsuario}&idEvento=${idEvento}`);
+
+            const myComm = await promise.data.filter(
+                (comm) => comm.idEvento === idEvento && comm.idUsuario === idUsuario
+            );
+
+            setComentario(myComm.length > 0 ? myComm[0].descricao : "");
+            setIdComentario(myComm.length > 0 ? myComm[0].idComentarioEvento : null);
         } catch (error) {
-            alert('Erro ao trazer comentario')
+            alert('Erro ao trazer comentario');
+            console.log(error)
         }
         setShowSpinner(false);
-    }
+    };
 
 
 
+    //********** CADASTRAR UM COMENTARIO *********** */
+    const postMyCommentary = async (descricao, idUsuario, idEvento) => {
+        try {
+            const promise = await api.post(myComentaryResource, {
+                descricao: descricao,
+                exibe: true,
+                idUsuario: idUsuario,
+                idEvento: idEvento,
+            });
 
-    //********** CADASTRAR UM COMENTARIO POST *********** */
-    async function postMyComentary() {
-        alert("Carregar o comentario");
-    }
-
+            if (promise.status === 200) {
+                alert("Comentário cadastrado com sucesso");
+            }
+        } catch (error) {
+            console.log("Erro ao cadastrar o comentário");
+            console.log(error);
+        }
+    };
 
 
 
     //********** REMOVE O COMENTÁRIO *********** */
-    const commentaryRemove = () => {
-        alert("Remover o comentário");
+    const commentaryRemove = async (idComentario) => {
+        // alert("Remover o comentário " + idComentario);
+
+        try {
+            const promise = await api.delete(
+                `${myComentaryResource}/${idComentario}`
+            );
+            if (promise.status === 200) {
+                alert("Evento excluído com sucesso!");
+            }
+        } catch (error) {
+            console.log("Erro ao excluir ");
+            console.log(error);
+        }
     };
 
 
@@ -167,25 +192,6 @@ const EventosAlunoPage = () => {
     const showHideModal = () => {
         setShowModal(showModal ? false : true);
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -267,8 +273,11 @@ const EventosAlunoPage = () => {
                     userId={userData.userId}
                     showHideModal={showHideModal}
                     fnGet={loadMyComentary}
-                    fnPost={postMyComentary}
+                    fnPost={postMyCommentary}
                     fnDelete={commentaryRemove}
+                    comentaryText={comentario}
+                    idEvento={idEvento}
+                    idComentario={idComentario}
                 />
             ) : null}
         </>
