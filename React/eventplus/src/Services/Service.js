@@ -37,11 +37,11 @@ export const presencesEventResource = '/PresencasEvento'
 export const eventTypeResource = '/TiposEvento'
 
 const apiPort = '7118';
-const localApiUrl = `https://localhost:${apiPort}/api`;
-const externalApiUrl = null;
+// const localApiUrl = `https://localhost:${apiPort}/api`;
+const externalApiUrl = 'https://eventwebapi-russo.azurewebsites.net/api';
 
 const api = axios.create({
-    baseURL: localApiUrl
+    baseURL: externalApiUrl
 });
 
 export default api;
