@@ -36,6 +36,10 @@ export const presencesEventResource = '/PresencasEvento'
  */
 export const eventTypeResource = '/TiposEvento'
 
+//Rota para o recurso Presenças Evento
+export const commentaryEventResource = '/ComentariosEvento';
+
+
 const apiPort = '7118';
 // const localApiUrl = `https://localhost:${apiPort}/api`;
 const externalApiUrl = 'https://eventwebapi-russo.azurewebsites.net/api';

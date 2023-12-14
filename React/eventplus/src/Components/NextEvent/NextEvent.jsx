@@ -3,7 +3,7 @@ import React from 'react';
 import { dateFormatDbToView } from '../../pages/Utils/stringFunctions';
 import { Tooltip } from 'react-tooltip';
 
-const NextEvent = ({ title, description, eventDate, idEvent }) => {
+const NextEvent = ({ title, description, eventDate, idEvent, linkText }) => {
 
     function conectar(idEvent) {
         alert(`Chamar o recurso para conectar ${idEvent}`)
@@ -32,7 +32,7 @@ const NextEvent = ({ title, description, eventDate, idEvent }) => {
 
             <p className='event-card__description'> {dateFormatDbToView(eventDate)} </p>
 
-            <a href="/" onClick={() => { conectar(idEvent) }} className='event-card__connect-link'>Conectar</a>
+            <a href="/" onClick={() => { conectar(idEvent) }} className='event-card__connect-link'>{linkText}</a>
 
         </article>
 

@@ -7,13 +7,14 @@ import MainContent from "../../Components/MainContent/MainContent"
 import NextEvent from "../../Components/NextEvent/NextEvent";
 import Container from "../../Components/Container/Container"
 import ContactSection from "../../Components/ContactSection/ContactSection";
-import api from '../../Services/Service';
+import api, { eventsResource } from '../../Services/Service';
 import { nextEventResource } from '../../Services/Service';
 import Notification from '../../Components/Notification/Notification';
 
 const HomePage = () => {
     const [notifyUser, setNotifyUser] = useState();
     const [nextEvents, setNextEvents] = useState([]);
+    const [previousEvents, setPreviousEvents] = useState([]);
     
     //Roda somente na inicialização do componente
     useEffect(()=>{
@@ -21,6 +22,10 @@ const HomePage = () => {
             try {
                 const promise = await api.get(`${nextEventResource}`);
                 const dados = await promise.data;
+
+                const request = await api.get(`${eventsResource}/ListarAnteriores`)
+
+                setPreviousEvents(request.data); //atualiza o previous events
 
                 setNextEvents(dados); //atualiza o state
             } catch (error) {
@@ -65,6 +70,29 @@ const HomePage = () => {
                                     description={e.descricao}
                                     eventDate={e.dataEvento}
                                     idEvent={e.idEvento}
+                                    linkText={"Conectar"}
+                                />
+                                )
+
+                            })
+                        }
+
+                    </div>
+                </Container>
+                <Container>
+                    <Title titleText={"Eventos anteriores"} />
+                    <div className="events-box">
+                        {
+                            previousEvents.map((e) => {
+                                return(
+                                    //Necessario puxar os nomes das propriedades la no BD ou pelo swagger
+                                    <NextEvent
+                                    key={e.idEvento} //Para retirar o Warning, a key precisa de algo unico, como foi passado o ID
+                                    title={e.nomeEvento}
+                                    description={e.descricao}
+                                    eventDate={e.dataEvento}
+                                    idEvent={e.idEvento}
+                                    linkText={"Detalhes"}
                                 />
                                 )
 

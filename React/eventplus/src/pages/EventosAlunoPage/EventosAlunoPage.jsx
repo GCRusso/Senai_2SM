@@ -7,7 +7,7 @@ import Container from "../../Components/Container/Container";
 import { Select } from "../../Components/FormComponents/FormComponents";
 import Spinner from "../../Components/Spinner/Spinner";
 import Modal from "../../Components/Modal/Modal";
-import api, { eventsResource, myComentaryResource, myEventsResource, presencesEventResource } from "../../Services/Service";
+import api, { eventsResource, commentaryEventResource, myEventsResource, presencesEventResource } from "../../Services/Service";
 
 
 import "./EventosAlunoPage.css";
@@ -29,14 +29,21 @@ const EventosAlunoPage = () => {
 
     const [showSpinner, setShowSpinner] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    
+    // State do comentário
+    const [comentario, setComentario] = useState();
+    // State do comentário novo
+    const [newCommentary, setNewCommentary] = useState();
 
+    // State do id do comentário
+    const [idComentario, setIdComentario] = useState();
+
+    // State para o id do Evento
+    const [idEvento, setIdEvento] = useState();
 
 
     // recupera os dados globais do usuário
     const { userData, setUserData } = useContext(UserContext);
-    const [comentario, setComentario] = useState("");
-    const [idEvento, setIdEvento] = useState("");
-    const [idComentario, setIdComentario] = useState("");
 
 
     //*****Listar meus eventos e todos eventos******
@@ -56,12 +63,6 @@ const EventosAlunoPage = () => {
                 setEventos(eventosMarcados);
 
                 console.clear();
-                console.log("TODOS OS EVENTOS: ")
-                console.log(todosEventos.data);
-                console.log("MEUS EVENTOS: ")
-                console.log(meusEventos.data);
-                console.log("EVENTOS MARCADOS: ")
-                console.log(eventosMarcados);
 
             } catch (error) {
                 console.log("ERRO na API");
@@ -126,39 +127,64 @@ const EventosAlunoPage = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+     //********** MOSTRA O MODAL *********** */
+     const showHideModal = (_idEvento) => {
+        setShowModal(showModal ? false : true);
+
+        setComentario("")
+        setNewCommentary("")
+
+        loadMyComentary(_idEvento);
+    };
+
+
     //********** LER UM COMENTÁRIO *********** */
-    const loadMyComentary = async (idUsuario, idEvento) => {
+    async function loadMyComentary(id) {
         setShowSpinner(true);
         try {
-            const promise = await api.get(`${myComentaryResource}?idUsuario=${idUsuario}&idEvento=${idEvento}`);
 
-            const myComm = await promise.data.filter(
-                (comm) => comm.idEvento === idEvento && comm.idUsuario === idUsuario
-            );
+            setIdEvento(id);
+            const promise = await (await api.get(`${commentaryEventResource}/BuscarPorIdUsuario?idUsuario=${userData.userId}&idEvento=${id}`)).data
 
-            setComentario(myComm.length > 0 ? myComm[0].descricao : "");
-            setIdComentario(myComm.length > 0 ? myComm[0].idComentarioEvento : null);
+            setComentario(promise.descricao)
+
+
+            
         } catch (error) {
-            alert('Erro ao trazer comentario');
-            console.log(error)
+            console.log("Erro ao carregar o evento");
+            console.log(error);
         }
         setShowSpinner(false);
     };
 
 
 
-    //********** CADASTRAR UM COMENTARIO *********** */
-    const postMyCommentary = async (descricao, idUsuario, idEvento) => {
+
+
+    //********** CADASTRAR UM COMENTARIO POST *********** */
+    async function postMyComentary() {
         try {
-            const promise = await api.post(myComentaryResource, {
-                descricao: descricao,
+            
+            console.log(idEvento);
+            const promise = await api.post(commentaryEventResource, {
+                descricao: newCommentary,
                 exibe: true,
-                idUsuario: idUsuario,
+                idUsuario: userData.userId,
                 idEvento: idEvento,
             });
 
-            if (promise.status === 200) {
-                alert("Comentário cadastrado com sucesso");
+            if (promise.status === 200 || promise.status === 201 || promise.status === 202) {
+                setComentario(newCommentary);
+                setNewCommentary("");
             }
         } catch (error) {
             console.log("Erro ao cadastrar o comentário");
@@ -168,13 +194,14 @@ const EventosAlunoPage = () => {
 
 
 
+
     //********** REMOVE O COMENTÁRIO *********** */
     const commentaryRemove = async (idComentario) => {
         // alert("Remover o comentário " + idComentario);
 
         try {
             const promise = await api.delete(
-                `${myComentaryResource}/${idComentario}`
+                `${commentaryEventResource}/${idComentario}`
             );
             if (promise.status === 200) {
                 alert("Evento excluído com sucesso!");
@@ -187,11 +214,14 @@ const EventosAlunoPage = () => {
 
 
 
+   
 
-    //********** MOSTRA O MODAL *********** */
-    const showHideModal = () => {
-        setShowModal(showModal ? false : true);
-    };
+
+
+
+
+
+
 
 
 
@@ -258,9 +288,7 @@ const EventosAlunoPage = () => {
                     <Table
                         dados={eventos}
                         fnConnect={handleConnect}
-                        fnShowModal={() => {
-                            showHideModal();
-                        }}
+                        fnShowModal={showHideModal}
                     />
                 </Container>
             </MainContent>
@@ -273,15 +301,17 @@ const EventosAlunoPage = () => {
                     userId={userData.userId}
                     showHideModal={showHideModal}
                     fnGet={loadMyComentary}
-                    fnPost={postMyCommentary}
+                    fnNewCommentary={postMyComentary}
                     fnDelete={commentaryRemove}
+
                     comentaryText={comentario}
-                    idEvento={idEvento}
-                    idComentario={idComentario}
+
+                    newCommentary={newCommentary}
+                    setNewCommentary={setNewCommentary}
                 />
             ) : null}
         </>
     );
-};
+}
 
 export default EventosAlunoPage;

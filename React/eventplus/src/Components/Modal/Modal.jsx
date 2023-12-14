@@ -3,24 +3,28 @@ import trashDelete from "../../assets/images/trash-delete-red.png";
 
 import { Button, Input } from "../FormComponents/FormComponents";
 import "./Modal.css";
+import { UserContext } from "../../context/AuthContext";
 
 const Modal = ({
   modalTitle = "Feedback",
-  comentaryText = "Não informado. Não informado. Não informado.",
+  comentaryText = "Sem comentários",
   userId = null,
   showHideModal = false,
   fnNewCommentary = null,
   fnDelete= null,
   fnGet= null,
+
+  newCommentary,
+  setNewCommentary = null
 }) => {
 
   useEffect(() => {
     async function carregarDados(){
-      fnGet();
     }
 
     carregarDados();
   },[]);
+
 
   return (
     <div className="modal">
@@ -48,12 +52,17 @@ const Modal = ({
         <Input
           placeholder="Escreva seu comentário..."
           className="comentary__entry"
+          required={"required"}
+          type={"text"}
+
+          value={newCommentary}
+          manipulationFunction={(e) => {setNewCommentary(e.target.value)}}
         />
 
         <Button
           textButton="Comentar"
           className="comentary__button"
-          manipulationFunction = {() => {}}
+          manipulationFunction = {() => {fnNewCommentary()}}
         />
       </article>
     </div>
