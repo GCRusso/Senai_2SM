@@ -11,3 +11,7 @@ export const dateFormatDbToView = data => {
 export default function xpto(x){
     return x + 1;
 }
+
+export const dateFormatDb = data => {
+return new Date(data).toLocaleDateString();
+}

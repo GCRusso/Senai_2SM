@@ -22,7 +22,6 @@ const HomePage = () => {
             try {
                 const promise = await api.get(`${nextEventResource}`);
                 const dados = await promise.data;
-
                 const request = await api.get(`${eventsResource}/ListarAnteriores`)
 
                 setPreviousEvents(request.data); //atualiza o previous events
