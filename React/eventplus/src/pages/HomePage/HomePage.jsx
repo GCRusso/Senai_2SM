@@ -44,7 +44,6 @@ const HomePage = () => {
 
 
 
-
      //Dados em "mocados"
     // const [nextEvents, setNextEvents] = useState([
     //     { id: 1, title: "Evento X", description: "Evento foi LEGAL!", eventDate: "10/11/2023" },
@@ -95,7 +94,6 @@ const HomePage = () => {
                                     linkText={"Detalhes"}
                                 />
                                 )
-
                             })
                         }
 

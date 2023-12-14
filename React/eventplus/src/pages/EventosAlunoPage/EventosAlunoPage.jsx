@@ -9,7 +9,6 @@ import Spinner from "../../Components/Spinner/Spinner";
 import Modal from "../../Components/Modal/Modal";
 import api, { eventsResource, commentaryEventResource, myEventsResource, presencesEventResource } from "../../Services/Service";
 
-
 import "./EventosAlunoPage.css";
 import { UserContext } from "../../context/AuthContext"
 
@@ -214,21 +213,7 @@ const EventosAlunoPage = () => {
 
 
 
-   
-
-
-
-
-
-
-
-
-
-
-
-
     //CONNECT CONECTAR AO EVENTO *****
-
     async function handleConnect(eventId, whatTheFunction, presencaId = null) {
         if (whatTheFunction === 'connect') {
             try {

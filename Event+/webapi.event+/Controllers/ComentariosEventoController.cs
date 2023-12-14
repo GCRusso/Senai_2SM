@@ -33,12 +33,12 @@ namespace webapi.event_.Controllers
 
 
 
-        
+
         [HttpPost("ComentarioIA")]
         //Método async é para quando usamos ferramentas externas, para aguardar a resposta da ferramenta antes de continuar o código
         public async Task<IActionResult> PostIA(ComentariosEvento novoComentario)
         {
-            try 
+            try
             {
                 //Pode ser utilizado destas 3 formas
                 //if(comentario.Descricao != null || comentario.Descricao == "")
@@ -55,7 +55,7 @@ namespace webapi.event_.Controllers
 
                 var moderationResult = await _contentModeratorClient.TextModeration.ScreenTextAsync("text/plain", stream, "por", false, false, null, true);
 
-                if(moderationResult.Terms != null)
+                if (moderationResult.Terms != null)
                 {
                     novoComentario.Exibe = false;
 
@@ -86,11 +86,13 @@ namespace webapi.event_.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            try {
+            try
+            {
                 return Ok(comentario.Listar());
             }
 
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 return BadRequest(e.Message);
             }
         }
@@ -136,20 +138,22 @@ namespace webapi.event_.Controllers
             {
                 return BadRequest(e.Message);
             }
-        } 
-    }
-
-    [HttpGet("ListarSomenteExibe")]
-    public IActionResult GetShow()
-    {
-        try
-        {
-            return Ok(comentario.ListarSomenteExibe());
         }
 
-        catch (Exception e)
+
+        [HttpGet("ListarSomenteExibe{id}")]
+        public IActionResult GetShow(Guid id)
         {
-            return BadRequest(e.Message);
+            try
+            {
+                return Ok(comentario.ListarSomenteExibe(id));
+            }
+
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }
+

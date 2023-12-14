@@ -39,6 +39,9 @@ export const eventTypeResource = '/TiposEvento'
 //Rota para o recurso Presenças Evento
 export const commentaryEventResource = '/ComentariosEvento';
 
+//Rota para o recurso Presenças Evento
+export const detailsEventResource = '/DetalhesEvento';
+
 
 const apiPort = '7118';
 // const localApiUrl = `https://localhost:${apiPort}/api`;

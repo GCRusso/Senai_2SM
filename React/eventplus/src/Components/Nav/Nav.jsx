@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 const Nav = ({ exibeNavbar, setExibeNavbar }) => {
     const { userData } = useContext(UserContext)
 
+    
+
     return (
         //Quando o exibeNavbar for true ele muda para a class exibeNavbar, quando for false é vazio ""
         <nav className={`navbar ${exibeNavbar ? "exibeNavbar" : ""}`}>
@@ -23,6 +25,7 @@ const Nav = ({ exibeNavbar, setExibeNavbar }) => {
             </Link>
 
             <div className="navbar__items-box">
+                
 
                 <Link to="/" className='navbar__item'>Home</Link>
 
@@ -35,7 +38,6 @@ const Nav = ({ exibeNavbar, setExibeNavbar }) => {
                     userData.nome && userData.role === "Comum" ? (
                         <Link className='navbar__item' to="/eventos-aluno">Eventos Aluno</Link>
                     ) : null
-
                 }
 
             </div>

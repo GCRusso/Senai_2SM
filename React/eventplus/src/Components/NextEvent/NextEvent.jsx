@@ -2,8 +2,10 @@ import './NextEvent.css'
 import React from 'react';
 import { dateFormatDbToView } from '../../pages/Utils/stringFunctions';
 import { Tooltip } from 'react-tooltip';
+import { Link, useParams } from 'react-router-dom';
 
 const NextEvent = ({ title, description, eventDate, idEvent, linkText }) => {
+
 
     function conectar(idEvent) {
         alert(`Chamar o recurso para conectar ${idEvent}`)
@@ -17,9 +19,7 @@ const NextEvent = ({ title, description, eventDate, idEvent, linkText }) => {
                 data-tooltip-content={title}
                 data-tooltip-place="bottom"
             >
-
                 {title.substr(0, 15)} </h2>
-
             <p
                 className='event-card__description'
                 data-tooltip-id={idEvent}
@@ -31,8 +31,7 @@ const NextEvent = ({ title, description, eventDate, idEvent, linkText }) => {
             </p>
 
             <p className='event-card__description'> {dateFormatDbToView(eventDate)} </p>
-
-            <a href="/" onClick={() => { conectar(idEvent) }} className='event-card__connect-link'>{linkText}</a>
+            <Link to={`/detalhes-evento/${idEvent}`} className='event-card__connect-link'>{linkText}</Link>
 
         </article>
 

@@ -10,6 +10,7 @@ import EventosPage from "../pages/EventosPage/EventosPage";
 import TestePageCopy from "../pages/TestePageCopy/TestePageCopy";
 import { PrivateRoute } from "./PrivateRoute";
 import EventosAlunoPage from "../pages/EventosAlunoPage/EventosAlunoPage";
+import DetalhesEventoPage from "../pages/DetalhesEventoPage/DetalhesEventoPage";
 
 const Rotas = () => {
     return (
@@ -23,7 +24,7 @@ const Rotas = () => {
                 <Route element={<HomePage />} path={"/"} exact />
 
                 {/* Testes */}
-                <Route element={<TestePage />} path={"/testes"} exact />
+                <Route element={<TestePage />} path={"/testes/:idEvento"} exact /> 
                 <Route element={<TestePageCopy />} path={"/testescopy"} exact />
 
                 {/* Páginas Privadas */}
@@ -52,7 +53,13 @@ const Rotas = () => {
                         </PrivateRoute>
                     } exact />
 
-
+                <Route
+                    path={"/detalhes-evento/:idEvento"}
+                    element={
+                        <PrivateRoute redirectTo="/">
+                            <DetalhesEventoPage />
+                        </PrivateRoute>
+                    } exact />
 
             </Routes>
 
