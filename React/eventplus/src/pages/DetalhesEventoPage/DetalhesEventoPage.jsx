@@ -26,7 +26,7 @@ const DetalhesEventoPage = () => {
             const tipoAqui = await api.get(`${eventTypeResource}/${evento.idTipoEvento}`)
             setTipo(tipoAqui.data)
         } catch (error) {
-            alert("Erro ao buscar o Tipo do evento!")
+            console.log("Erro ao buscar o Tipo do evento!");
         }
     }
 
