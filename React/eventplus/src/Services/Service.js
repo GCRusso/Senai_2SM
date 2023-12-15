@@ -22,7 +22,7 @@ export const nextEventResource = '/Evento/ListarProximos'
 export const myEventsResource = '/PresencaEvento/ListarMinhas'
 
 /**
- * Rota para o recurso Presença evento
+ * Rota para o recurso Comentario por ID usuario
  */
 export const myComentaryResource = '/ComentariosEvento/BuscarPorIdUsuario'
 
@@ -36,11 +36,15 @@ export const presencesEventResource = '/PresencasEvento'
  */
 export const eventTypeResource = '/TiposEvento'
 
-//Rota para o recurso Presenças Evento
+//Rota para o recurso Comentario evento
 export const commentaryEventResource = '/ComentariosEvento';
 
-//Rota para o recurso Presenças Evento
+//Rota para o recurso comentario IA
+export const commentaryEventIaResource = '/ComentariosEvento/ComentarioIA'
+
+//Rota para o recurso Detalhes do evento
 export const detailsEventResource = '/DetalhesEvento';
+
 
 
 const apiPort = '7118';

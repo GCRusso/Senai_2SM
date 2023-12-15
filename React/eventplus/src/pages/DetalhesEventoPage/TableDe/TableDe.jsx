@@ -44,13 +44,14 @@ const TableDe = ({ evento, comentario, tipo }) => {
  
                 </tr>
                 {comentario.map((c)=>{
-                    return(
-                    <tr className="tbal-data__head-row" key={Math.random()}>
-                        
-                        <td>{c.descricao}</td>
-                        <td className="table-data__head-title table-data__head-title--big">{c.usuario.nome}</td>
-                    </tr>
-                    )
+                    if(comentario.exibe === true){
+                        return(
+                            <tr className="tbal-data__head-row" key={Math.random()}>
+                                <td>{c.descricao}</td>
+                                <td className="table-data__head-title table-data__head-title--big">{c.usuario.nome}</td>
+                            </tr>
+                            )
+                    }
                 })}
             </tbody>
 

@@ -7,7 +7,7 @@ import Container from "../../Components/Container/Container";
 import { Select } from "../../Components/FormComponents/FormComponents";
 import Spinner from "../../Components/Spinner/Spinner";
 import Modal from "../../Components/Modal/Modal";
-import api, { eventsResource, commentaryEventResource, myEventsResource, presencesEventResource } from "../../Services/Service";
+import api, { eventsResource, commentaryEventResource, myEventsResource, presencesEventResource,  commentaryEventIaResource } from "../../Services/Service";
 
 import "./EventosAlunoPage.css";
 import { UserContext } from "../../context/AuthContext"
@@ -125,16 +125,6 @@ const EventosAlunoPage = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
      //********** MOSTRA O MODAL *********** */
      const showHideModal = (_idEvento) => {
         setShowModal(showModal ? false : true);
@@ -150,12 +140,10 @@ const EventosAlunoPage = () => {
     async function loadMyComentary(id) {
         setShowSpinner(true);
         try {
-
             setIdEvento(id);
             const promise = await (await api.get(`${commentaryEventResource}/BuscarPorIdUsuario?idUsuario=${userData.userId}&idEvento=${id}`)).data
 
             setComentario(promise.descricao)
-
 
             
         } catch (error) {
@@ -168,15 +156,11 @@ const EventosAlunoPage = () => {
 
 
 
-
     //********** CADASTRAR UM COMENTARIO POST *********** */
     async function postMyComentary() {
         try {
-            
-            console.log(idEvento);
-            const promise = await api.post(commentaryEventResource, {
+            const promise = await api.post(commentaryEventIaResource ,{
                 descricao: newCommentary,
-                exibe: true,
                 idUsuario: userData.userId,
                 idEvento: idEvento,
             });
@@ -185,6 +169,7 @@ const EventosAlunoPage = () => {
                 setComentario(newCommentary);
                 setNewCommentary("");
             }
+ 
         } catch (error) {
             console.log("Erro ao cadastrar o comentário");
             console.log(error);
@@ -248,7 +233,6 @@ const EventosAlunoPage = () => {
             console.log("Erro ao desconectar o usuário do evento");
             console.log(error);
         }
-
     }
 
 

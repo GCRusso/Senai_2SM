@@ -15,13 +15,13 @@ const DetalhesEventoPage = () => {
 
     const { idEvento } = useParams();
 
-    const [evento, setEvento] = useState({})
+    const [evento, setEvento] = useState([])
 
     const [comentario, setComentario] = useState([]);
 
-    const [tipo, setTipo] = useState({});
+    const [tipo, setTipo] = useState([]);
 
-    async function getType(){
+    async function getType(idTipoEvento) {
         try {
             const tipoAqui = await api.get(`${eventTypeResource}/${evento.idTipoEvento}`)
             setTipo(tipoAqui.data)
@@ -37,7 +37,6 @@ const DetalhesEventoPage = () => {
 
             setEvento(eventoAqui.data);
             setComentario(comentario.data)
-            
         } catch (error) {
             alert("Erro ao buscar evento!")
         }
@@ -46,7 +45,7 @@ const DetalhesEventoPage = () => {
     useEffect(() => {
         getEvent();
         getType();
-    }, []);
+    });
 
     return (
         <>
@@ -60,6 +59,7 @@ const DetalhesEventoPage = () => {
                                 comentario={comentario}
                                 tipo={tipo}
                             />
+
                         </div>
                     </Container>
                 </section>
